@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwl3hy5b8rywc"]
+
+[ext_resource type="PackedScene" uid="uid://b8lno503nhypk" path="res://bullet.tscn" id="1_b6ro0"]
+[ext_resource type="PackedScene" uid="uid://bkvktn0c6bd7w" path="res://character_silver.tscn" id="2_tcanr"]
+[ext_resource type="PackedScene" uid="uid://cmem5oeti8fbu" path="res://test_env.tscn" id="3_2n3av"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="bullet" parent="." instance=ExtResource("1_b6ro0")]
+position = Vector2(153, 522)
+
+[node name="char_silver" parent="." instance=ExtResource("2_tcanr")]
+position = Vector2(102, 541)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("3_2n3av")]
+position = Vector2(542, 633)

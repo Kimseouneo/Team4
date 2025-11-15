@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://bkvktn0c6bd7w"]
+
+[ext_resource type="Script" uid="uid://jbaerp08yh3v" path="res://player.gd" id="1_5qacm"]
+[ext_resource type="Texture2D" uid="uid://be1ekjkqq0obb" path="res://img/back_wheel1.png" id="1_42hgf"]
+[ext_resource type="Texture2D" uid="uid://id6bukujg5j5" path="res://img/body1_dmg_0.png" id="2_5qacm"]
+[ext_resource type="Texture2D" uid="uid://b5n3ws5p65h25" path="res://img/body1_dmg_1.png" id="3_b5msp"]
+[ext_resource type="Texture2D" uid="uid://dln2u2tt8yegs" path="res://img/front_wheel1.png" id="3_m4gea"]
+[ext_resource type="Texture2D" uid="uid://bda8wk6dsdjfb" path="res://img/body1_dmg_2.png" id="4_1f8qr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5msp"]
+size = Vector2(156, 128.5)
+
+[node name="char_silver" type="RigidBody2D"]
+position = Vector2(268, 144)
+collision_mask = 6
+script = ExtResource("1_5qacm")
+normal_texture = ExtResource("2_5qacm")
+mid_damage_texture = ExtResource("3_b5msp")
+heavy_damage_texture = ExtResource("4_1f8qr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.05176e-05, -0.25)
+shape = SubResource("RectangleShape2D_b5msp")
+
+[node name="BackWheel1" type="Sprite2D" parent="."]
+position = Vector2(38, 45)
+rotation = 0.0174533
+texture = ExtResource("1_42hgf")
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("2_5qacm")
+
+[node name="FrontWheel1" type="Sprite2D" parent="."]
+position = Vector2(-38, 45)
+texture = ExtResource("3_m4gea")

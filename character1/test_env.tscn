@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmem5oeti8fbu"]
+
+[ext_resource type="Texture2D" uid="uid://be1ekjkqq0obb" path="res://img/back_wheel1.png" id="1_pb8ym"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gco2m"]
+size = Vector2(1088, 33)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 3
+
+[node name="BackWheel1" type="Sprite2D" parent="."]
+scale = Vector2(10.5485, 0.560606)
+texture = ExtResource("1_pb8ym")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_gco2m")
