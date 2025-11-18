@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://2rnhmeok7h2b"]
+
+[ext_resource type="Texture2D" uid="uid://dwcqt1omcif0f" path="res://img/bullet.png" id="1_v7oki"]
+[ext_resource type="Script" path="res://bullet.gd" id="1_v8qja"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v8qja"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v8qja"]
+radius = 8.0
+height = 100.0
+
+[node name="bullet" type="RigidBody2D"]
+collision_mask = 4
+physics_material_override = SubResource("PhysicsMaterial_v8qja")
+linear_damp_mode = 1
+linear_damp = -1.0
+script = ExtResource("1_v8qja")
+
+[node name="Bullet" type="Sprite2D" parent="."]
+position = Vector2(3, 0)
+texture = ExtResource("1_v7oki")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_v8qja")
+debug_color = Color(0.993225, 0.0763771, 5.77569e-07, 0.42)
