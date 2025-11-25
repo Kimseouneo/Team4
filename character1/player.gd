@@ -1,7 +1,10 @@
-extends RigidBody2D
-@export var health := 10
+extends CharacterBody2D
 @onready var body_sprite: Sprite2D = $Body
+@onready var health_bar: ProgressBar = $HealthBar
 
+@export var health = 10			#현재 체력
+@export var max_health = 10		#최대 체력
+@export var speed = 250
 @export var normal_texture: Texture2D
 @export var mid_damage_texture: Texture2D
 @export var heavy_damage_texture: Texture2D
@@ -9,15 +12,32 @@ extends RigidBody2D
 func _ready():
 	# 초기 텍스처 세팅
 	body_sprite.texture = normal_texture
+	health_bar.max_value = max_health
+	health_bar.value = health
 	
 func take_damage(amount: int):
 	health = max(health - amount, 0)
 	_update_body_texture()
+	_update_health_bar()
 
-func _update_body_texture():
+func _update_health_bar(): #피해의 정도에 따라 체력바 업데이트
+	if health_bar:
+		health_bar.value = health
+
+func _update_body_texture(): #피해의 정도에 따라 캐릭터의 texture를 업데이트
 	if health > 6:
 		body_sprite.texture = normal_texture
 	elif health > 3:
 		body_sprite.texture = mid_damage_texture
 	else:
 		body_sprite.texture = heavy_damage_texture
+
+func _physics_process(delta: float) -> void:
+	var direction = Input.get_axis("ui_left", "ui_right")
+	velocity.x = direction * speed
+	move_and_slide()
+
+
+func _on_bullet_body_entered(body: Node) -> void:
+	health -= 1
+	_update_health_bar()

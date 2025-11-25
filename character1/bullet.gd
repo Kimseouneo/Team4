@@ -4,19 +4,19 @@ extends RigidBody2D
 @export var power: float = 5.0   # 드래그 세기 조절 변수
 # 화살표 길이 조절용 변수 (값이 클수록 화살표가 덜 늘어남)
 @export var arrow_scale_damp: float = 50.0
-
 var is_dragging := false
 var start_pos := Vector2.ZERO
 var drag_start := Vector2.ZERO
-var is_exploding := false # 이미 폭발 중인지 확인하는 변수
+var is_exploding := false # 이미 폭wsd발a sda중인지 확인하는 변수
 var initial_arrow_scale: Vector2
-
 # $Bullet 쪽에 원하는 이미지 드래그해서 교체하면 이미지 변환 가능
 @onready var sprite: Sprite2D = $Bullet
 # AnimatedSprite2D 노드를 가져옵니다 (씬 트리에 노드 이름이 정확해야 합니다)
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 # 화살표 노드 연결
 @onready var arrow_sprite: Sprite2D = $Arrow
+# character의 global position 받기 위함
+@onready var char_silver : Node2D = $"../char_silver"
 
 func _ready():
 	start_pos = global_position
@@ -29,8 +29,8 @@ func _ready():
 	initial_arrow_scale = arrow_sprite.scale
 	
 	# [중요] RigidBody2D의 충돌 감지를 위해 필수적인 설정
-	contact_monitor = true
-	max_contacts_reported = 1
+	contact_monitor = true #충돌 감지 on
+	max_contacts_reported = 1 #충돌 시 한번에 인식할 물체의 개수
 	
 	# 충돌 시그널 연결 (에디터에서 연결해도 되지만 코드로 하면 안전합니다)
 	body_entered.connect(_on_body_entered)
@@ -89,8 +89,12 @@ func _fire(release_pos: Vector2):
 	print("Launch velocity:", linear_velocity)
 
 func _physics_process(delta):
+	if freeze:
+		if char_silver:
+			global_position = char_silver.global_position + Vector2(50, -10)
+		return
 	# 폭발 중이거나 아직 발사 안했으면 물리 연산 중지
-	if is_exploding or freeze: return
+	if is_exploding: return
 	# 중력 적용
 	linear_velocity.y += gravity * delta
 
@@ -138,6 +142,6 @@ func _stop_physics():
 	freeze = true             # 위치 고정
 	linear_velocity = Vector2.ZERO  # 속도 0
 	angular_velocity = 0      # 회전 속도 0
-	gravity_scale = 0         # 중력 영향 제거
+	gravity_scale = 0         # 중력 영향 제거	
 	# 혹시 모르니 물리 처리 프로세스도 끕니다
 	set_physics_process(false)
