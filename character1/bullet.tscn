@@ -1,13 +1,58 @@
-[gd_scene load_steps=5 format=3 uid="uid://2rnhmeok7h2b"]
+[gd_scene load_steps=16 format=3 uid="uid://2rnhmeok7h2b"]
 
 [ext_resource type="Texture2D" uid="uid://dwcqt1omcif0f" path="res://img/bullet.png" id="1_v7oki"]
-[ext_resource type="Script" path="res://bullet.gd" id="1_v8qja"]
+[ext_resource type="Script" uid="uid://bmbfhyos4b20t" path="res://bullet.gd" id="1_v8qja"]
+[ext_resource type="Texture2D" uid="uid://c2vbq67l22jxm" path="res://img/1.png" id="3_as0xd"]
+[ext_resource type="Texture2D" uid="uid://chc751gjkpbts" path="res://img/2.png" id="4_2eep6"]
+[ext_resource type="Texture2D" uid="uid://d3rj54m38p2m0" path="res://img/3.png" id="5_qd0d2"]
+[ext_resource type="Texture2D" uid="uid://cdoni6lwstnxf" path="res://img/4.png" id="6_4r2mu"]
+[ext_resource type="Texture2D" uid="uid://dvocdej4weuqq" path="res://img/5.png" id="7_o7457"]
+[ext_resource type="Texture2D" uid="uid://cc7y4flm5hkme" path="res://img/6.png" id="8_ugsrq"]
+[ext_resource type="Texture2D" uid="uid://ksk3657cbka6" path="res://img/7.png" id="9_51pxt"]
+[ext_resource type="Texture2D" uid="uid://bap37llabymfe" path="res://img/8.png" id="10_05w2j"]
+[ext_resource type="Texture2D" uid="uid://r8wn3tgnibrm" path="res://img/9.png" id="11_ck3xx"]
+[ext_resource type="Texture2D" uid="uid://d2v8pjvw3x7is" path="res://img/arrowImage-Photoroom.png" id="12_2eep6"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v8qja"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v8qja"]
 radius = 8.0
 height = 100.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5kas7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_as0xd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2eep6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qd0d2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4r2mu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_o7457")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ugsrq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_51pxt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_05w2j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ck3xx")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 12.0
+}]
 
 [node name="bullet" type="RigidBody2D"]
 collision_mask = 4
@@ -24,3 +69,15 @@ texture = ExtResource("1_v7oki")
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_v8qja")
 debug_color = Color(0.993225, 0.0763771, 5.77569e-07, 0.42)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5kas7")
+animation = &"explode"
+frame = 1
+
+[node name="Arrow" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(10, -2)
+scale = Vector2(0.18841796, 0.14296874)
+texture = ExtResource("12_2eep6")
+offset = Vector2(1.02, 0)
