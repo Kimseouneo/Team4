@@ -5,9 +5,16 @@ extends CharacterBody2D
 @export var health = 10			#현재 체력
 @export var max_health = 10		#최대 체력
 @export var speed = 250
+@export var gravity = 1200.0
+@export var jump = 600.0
 @export var normal_texture: Texture2D
 @export var mid_damage_texture: Texture2D
 @export var heavy_damage_texture: Texture2D
+
+var active = false
+
+func set_active(state: bool):
+	active = state
 
 func _ready():
 	# 초기 텍스처 세팅
@@ -33,10 +40,21 @@ func _update_body_texture(): #피해의 정도에 따라 캐릭터의 texture를
 		body_sprite.texture = heavy_damage_texture
 
 func _physics_process(delta: float) -> void:
-	var direction = Input.get_axis("ui_left", "ui_right")
+	if not active:
+		return
+	if not is_on_floor():
+		velocity.y += gravity*delta
+	else: velocity.y = 0
+	
+	var direction = Input.get_axis("char_1_left", "char_1_right")
 	velocity.x = direction * speed
+	
+	if Input.is_action_just_pressed("char_1_up") and is_on_floor():
+		velocity.y = -jump
 	move_and_slide()
-
+	
+	if Input.is_action_just_pressed("ui_accept"):
+		get_parent().get_node("TurnManager").next_turn()
 
 func _on_bullet_body_entered(body: Node) -> void:
 	health -= 1

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwl3hy5b8rywc"]
+[gd_scene load_steps=6 format=3 uid="uid://bwl3hy5b8rywc"]
 
 [ext_resource type="PackedScene" uid="uid://2rnhmeok7h2b" path="res://bullet.tscn" id="1_b6ro0"]
 [ext_resource type="PackedScene" uid="uid://bkvktn0c6bd7w" path="res://character_silver.tscn" id="2_tcanr"]
 [ext_resource type="PackedScene" uid="uid://cmem5oeti8fbu" path="res://test_env.tscn" id="3_2n3av"]
-[ext_resource type="PackedScene" uid="uid://dh44r4f5badhk" path="res://target.tscn" id="4_nuuvo"]
+[ext_resource type="Script" uid="uid://c58xox0grg3xc" path="res://turnmanager.gd" id="4_aueqv"]
+[ext_resource type="PackedScene" uid="uid://bo3sko3rywpwp" path="res://chracter_red.tscn" id="5_saih3"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -13,11 +14,15 @@ position = Vector2(153, 522)
 [node name="char_silver" parent="." instance=ExtResource("2_tcanr")]
 position = Vector2(102, 541)
 
+[node name="char_red" parent="." instance=ExtResource("5_saih3")]
+position = Vector2(805, 517)
+rotation = 3.14159
+scale = Vector2(1, -1)
+
 [node name="StaticBody2D" parent="." instance=ExtResource("3_2n3av")]
 position = Vector2(542, 633)
 
-[node name="Target" parent="." instance=ExtResource("4_nuuvo")]
-position = Vector2(659, 488)
+[node name="turnmanager" type="Node2D" parent="."]
+script = ExtResource("4_aueqv")
 
 [connection signal="body_entered" from="bullet" to="char_silver" method="_on_bullet_body_entered"]
-[connection signal="body_entered" from="bullet" to="Target" method="_on_bullet_body_entered"]

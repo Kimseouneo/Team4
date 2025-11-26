@@ -1,9 +1,9 @@
-res://test_main.tscn
-res://bullet.gd
-res://target.tscn
-res://target.gd
-res://character_silver.tscn
-res://player.gd
 res://chracter_red.tscn
-res://health bar/addons/simple_health_bar/health_bar.tscn
-res://health_bar.tscn
+res://turnmanager.gd
+res://test_main.tscn
+res://character_silver.tscn
+res://final/main.tscn
+res://final/pvp.tscn
+res://player_silver.gd
+res://test_env.tscn
+res://player_red.gd
