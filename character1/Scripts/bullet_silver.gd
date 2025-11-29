@@ -18,6 +18,8 @@ var initial_arrow_scale: Vector2
 # character의 global position 받기 위함
 @onready var char_silver : Node2D = $"../char_silver"
 
+
+
 func _ready():
 	start_pos = global_position
 	freeze = true

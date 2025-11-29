@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://dh44r4f5badhk"]
 
-[ext_resource type="Script" uid="uid://brb8yq2pcpup3" path="res://target.gd" id="1_e1yvt"]
+[ext_resource type="Script" uid="uid://brb8yq2pcpup3" path="res://Scripts/target.gd" id="1_e1yvt"]
 [ext_resource type="Texture2D" uid="uid://ns1y7a282l2b" path="res://img/target.png" id="1_t2jmu"]
+
 
 [node name="Target" type="StaticBody2D"]
 collision_layer = 4

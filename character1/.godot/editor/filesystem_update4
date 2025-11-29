@@ -1,9 +1,7 @@
-res://chracter_red.tscn
-res://turnmanager.gd
-res://test_main.tscn
-res://character_silver.tscn
-res://final/main.tscn
 res://final/pvp.tscn
-res://player_silver.gd
-res://test_env.tscn
+res://test_main.tscn
+res://turnmanager.gd
+res://bullet_red.gd
+res://bullet_silver.gd
 res://player_red.gd
+res://bullet.tscn

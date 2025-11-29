@@ -15,6 +15,7 @@ var active = false
 
 func set_active(state: bool):
 	active = state
+
 func _ready():
 	# 초기 텍스처 세팅
 	body_sprite.texture = normal_texture
