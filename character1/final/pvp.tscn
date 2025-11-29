@@ -13,20 +13,20 @@
 [node name="char_silver" parent="." instance=ExtResource("1_vhvi2")]
 position = Vector2(135, 605)
 
+[node name="bullet_silver" parent="char_silver" instance=ExtResource("5_u2a8m")]
+position = Vector2(27, -29)
+script = ExtResource("6_mqe70")
+
 [node name="char_red" parent="." instance=ExtResource("2_ik2x8")]
 position = Vector2(914, 606)
+
+[node name="bullet_red" parent="char_red" instance=ExtResource("5_u2a8m")]
+position = Vector2(-20, -13)
+scale = Vector2(1, -1)
+script = ExtResource("7_mqe70")
 
 [node name="StaticBody2D" parent="." instance=ExtResource("3_6pmuh")]
 position = Vector2(557, 709)
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="TurnManager" type="Node2D" parent="."]
 script = ExtResource("4_ik2x8")
-
-[node name="bullet_silver" parent="." instance=ExtResource("5_u2a8m")]
-position = Vector2(162, 576)
-script = ExtResource("6_mqe70")
-
-[node name="bullet_red" parent="." instance=ExtResource("5_u2a8m")]
-position = Vector2(934, 593)
-scale = Vector2(-1, -1)
-script = ExtResource("7_mqe70")

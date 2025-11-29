@@ -1,7 +1,5 @@
-res://final/pvp.tscn
 res://test_main.tscn
+res://Scripts/bullet_red.gd
+res://final/pvp.tscn
+res://Scripts/bullet_silver.gd
 res://turnmanager.gd
-res://bullet_red.gd
-res://bullet_silver.gd
-res://player_red.gd
-res://bullet.tscn

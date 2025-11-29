@@ -16,7 +16,12 @@ var initial_arrow_scale: Vector2
 # 화살표 노드 연결
 @onready var arrow_sprite: Sprite2D = $Arrow
 # character의 global position 받기 위함
-@onready var char_silver : Node2D = $"."
+@onready var char_red : Node2D = get_parent()
+@onready var turn_manager = $"../../TurnManager"
+var active = false
+
+func set_active(state: bool):
+	active = state
 
 func _ready():
 	start_pos = global_position
@@ -37,7 +42,7 @@ func _ready():
 	
 func _input(event):
 	# 폭발 중이면 입력 무시
-	if is_exploding: return
+	if not active or is_exploding: return
 	
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
@@ -56,6 +61,8 @@ func _input(event):
 					# 발사 시 화살표 숨김
 					arrow_sprite.visible = false
 					_fire(event.position)
+					if turn_manager:
+						turn_manager.next_turn()
 	elif event is InputEventMouseMotion and is_dragging:
 		update_arrow(event.position)
 
@@ -90,8 +97,8 @@ func _fire(release_pos: Vector2):
 
 func _physics_process(delta):
 	if freeze:
-		if char_silver:
-			global_position = char_silver.global_position + Vector2(50, -10)
+		if char_red:
+			global_position = char_red.global_position + Vector2(50, -10)
 		return
 	# 폭발 중이거나 아직 발사 안했으면 물리 연산 중지
 	if is_exploding: return

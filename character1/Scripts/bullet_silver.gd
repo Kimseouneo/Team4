@@ -16,9 +16,12 @@ var initial_arrow_scale: Vector2
 # 화살표 노드 연결
 @onready var arrow_sprite: Sprite2D = $Arrow
 # character의 global position 받기 위함
-@onready var char_silver : Node2D = $"../char_silver"
+@onready var char_silver : Node2D = get_parent()
+@onready var turn_manager = $"../../TurnManager"
+var active = false
 
-
+func set_active(state: bool):
+	active = state
 
 func _ready():
 	start_pos = global_position
@@ -39,7 +42,7 @@ func _ready():
 	
 func _input(event):
 	# 폭발 중이면 입력 무시
-	if is_exploding: return
+	if not active or is_exploding: return
 	
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
@@ -135,10 +138,12 @@ func explode():
 	
 	# 애니메이션 끝날 때까지 대기
 	await animated_sprite.animation_finished
-	
+	await get_tree().create_timer(1.5).timeout
 	# 총알 삭제
 	queue_free()
 
+	if turn_manager:
+		turn_manager.next_turn()
 # 물리 동작을 멈추는 함수를 따로 분리 (call_deferred로 호출됨)
 func _stop_physics():
 	freeze = true             # 위치 고정
