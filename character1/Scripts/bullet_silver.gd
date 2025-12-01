@@ -7,7 +7,7 @@ extends RigidBody2D
 var is_dragging := false
 var start_pos := Vector2.ZERO
 var drag_start := Vector2.ZERO
-var is_exploding := false # 이미 폭wsd발a sda중인지 확인하는 변수
+var is_exploding := false # 이미 폭발 	중인지 확인하는 변수
 var initial_arrow_scale: Vector2
 # $Bullet 쪽에 원하는 이미지 드래그해서 교체하면 이미지 변환 가능
 @onready var sprite: Sprite2D = $Bullet
@@ -18,6 +18,7 @@ var initial_arrow_scale: Vector2
 # character의 global position 받기 위함
 @onready var char_silver : Node2D = get_parent()
 @onready var turn_manager = $"../../TurnManager"
+@onready var collision_shape = $CollisionShape2D  # bullet의 충돌 모양 노드
 var active = false
 
 func set_active(state: bool):
@@ -35,7 +36,7 @@ func _ready():
 	
 	# [중요] RigidBody2D의 충돌 감지를 위해 필수적인 설정
 	contact_monitor = true #충돌 감지 on
-	max_contacts_reported = 1 #충돌 시 한번에 인식할 물체의 개수
+	max_contacts_reported = 2 #충돌 시 한번에 인식할 물체의 개수
 	
 	# 충돌 시그널 연결 (에디터에서 연결해도 되지만 코드로 하면 안전합니다)
 	body_entered.connect(_on_body_entered)
@@ -92,6 +93,10 @@ func _fire(release_pos: Vector2):
 	var launch_vector = -drag_vector * power
 	linear_velocity = launch_vector
 	print("Launch velocity:", linear_velocity)
+	
+	collision_shape.disabled = true
+	await get_tree().create_timer(0.2).timeout
+	collision_shape.disabled = false
 
 func _physics_process(delta):
 	if freeze:
@@ -138,13 +143,24 @@ func explode():
 	
 	# 애니메이션 끝날 때까지 대기
 	await animated_sprite.animation_finished
-	await get_tree().create_timer(1.5).timeout
-	# 총알 삭제
-	queue_free()
-
+	await get_tree().create_timer(0.5).timeout
+	# 총알 비활성화 만들기
+	stop_bullet()	
+	
 	if turn_manager:
 		turn_manager.next_turn()
 # 물리 동작을 멈추는 함수를 따로 분리 (call_deferred로 호출됨)
+func stop_bullet():
+	is_exploding = false
+	freeze = true
+	gravity_scale = 0
+	linear_velocity = Vector2.ZERO
+	rotation = 0
+	sprite.visible = false
+	animated_sprite.visible = false
+	arrow_sprite.visible = false
+	global_position = char_silver.global_position + Vector2(50, -10)
+
 func _stop_physics():
 	freeze = true             # 위치 고정
 	linear_velocity = Vector2.ZERO  # 속도 0

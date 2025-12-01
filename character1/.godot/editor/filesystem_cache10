@@ -1,16 +1,16 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1764392646
+::res://::1764557602
 bullet.tscn::PackedScene::1930995658619334291::1764392331::0::1::::<><><>0<>0<><>::uid://dwcqt1omcif0f::::res://img/bullet.png<>uid://c2vbq67l22jxm::::res://img/1.png<>uid://chc751gjkpbts::::res://img/2.png<>uid://d3rj54m38p2m0::::res://img/3.png<>uid://cdoni6lwstnxf::::res://img/4.png<>uid://dvocdej4weuqq::::res://img/5.png<>uid://cc7y4flm5hkme::::res://img/6.png<>uid://ksk3657cbka6::::res://img/7.png<>uid://bap37llabymfe::::res://img/8.png<>uid://r8wn3tgnibrm::::res://img/9.png<>uid://d2v8pjvw3x7is::::res://img/arrowImage-Photoroom.png
 character_silver.tscn::PackedScene::3132302874476541274::1764392220::0::1::::<><><>0<>0<><>::uid://jbaerp08yh3v::::res://Scripts/player_silver.gd<>uid://be1ekjkqq0obb::::res://img/back_wheel1.png<>uid://id6bukujg5j5::::res://img/body1_dmg_0.png<>uid://b5n3ws5p65h25::::res://img/body1_dmg_1.png<>uid://dln2u2tt8yegs::::res://img/front_wheel1.png<>uid://bda8wk6dsdjfb::::res://img/body1_dmg_2.png<>uid://drvgkns1v81b2::::res://health_bar.tscn
 chracter_red.tscn::PackedScene::3427978614934856199::1764392220::0::1::::<><><>0<>0<><>::uid://be1ekjkqq0obb::::res://img/back_wheel1.png<>uid://dfdik6y0r628g::::res://Scripts/player_red.gd<>uid://drvgkns1v81b2::::res://health_bar.tscn<>uid://kcmhlqta5n62::::res://img/body2_dmg_0.png<>uid://dln2u2tt8yegs::::res://img/front_wheel1.png<>uid://dn2wq7o7j0a7i::::res://img/body2_dmg_1.png<>uid://clih7k5ggsswh::::res://img/body2_dmg_2.png
 health_bar.tscn::PackedScene::8396207197477499325::1764392220::0::1::::<><><>0<>0<><>::uid://bde034k0rcjj6::::res://Scripts/health_bar.gd
 target.tscn::PackedScene::7712243594965453076::1764392223::0::1::::<><><>0<>0<><>::uid://brb8yq2pcpup3::::res://Scripts/target.gd<>uid://ns1y7a282l2b::::res://img/target.png
 test_env.tscn::PackedScene::5624147922170560562::1764198100::0::1::::<><><>0<>0<><>::uid://be1ekjkqq0obb::::res://img/back_wheel1.png
-test_main.tscn::PackedScene::3954997282374033414::1764392215::0::1::::<><><>0<>0<><>::uid://2rnhmeok7h2b::::res://bullet.tscn<>uid://bkvktn0c6bd7w::::res://character_silver.tscn<>uid://cmem5oeti8fbu::::res://test_env.tscn<>uid://c58xox0grg3xc::::res://turnmanager.gd<>uid://bo3sko3rywpwp::::res://chracter_red.tscn<>uid://dqw3y6q4vtyqq::::res://Scripts/bullet_red.gd
-turnmanager.gd::GDScript::6948053881312206400::1764391721::0::1::::<>Node2D<><>0<>0<><>::
+test_main.tscn::PackedScene::3954997282374033414::1764393268::0::1::::<><><>0<>0<><>::uid://2rnhmeok7h2b::::res://bullet.tscn<>uid://cmem5oeti8fbu::::res://test_env.tscn<>uid://bo3sko3rywpwp::::res://chracter_red.tscn<>uid://dqw3y6q4vtyqq::::res://Scripts/bullet_red.gd
+turnmanager.gd::GDScript::6948053881312206400::1764394047::0::1::::<>Node2D<><>0<>0<><>::
 wind.tscn::PackedScene::4536776410273651017::1764198100::0::1::::<><><>0<>0<><>::uid://cc2nm4m06is7o::::res://wind.gd
-::res://final/::1764392487
-pvp.tscn::PackedScene::612889716276181290::1764392487::0::1::::<><><>0<>0<><>::uid://bkvktn0c6bd7w::::res://character_silver.tscn<>uid://bo3sko3rywpwp::::res://chracter_red.tscn<>uid://cmem5oeti8fbu::::res://test_env.tscn<>uid://c58xox0grg3xc::::res://turnmanager.gd<>uid://2rnhmeok7h2b::::res://bullet.tscn<>uid://bmbfhyos4b20t::::res://Scripts/bullet_silver.gd<>uid://dqw3y6q4vtyqq::::res://Scripts/bullet_red.gd
+::res://final/::1764400972
+pvp.tscn::PackedScene::612889716276181290::1764400972::0::1::::<><><>0<>0<><>::uid://bkvktn0c6bd7w::::res://character_silver.tscn<>uid://bo3sko3rywpwp::::res://chracter_red.tscn<>uid://cmem5oeti8fbu::::res://test_env.tscn<>uid://c58xox0grg3xc::::res://turnmanager.gd<>uid://2rnhmeok7h2b::::res://bullet.tscn<>uid://bmbfhyos4b20t::::res://Scripts/bullet_silver.gd<>uid://dqw3y6q4vtyqq::::res://Scripts/bullet_red.gd
 ::res://img/::1764155963
 1.png::CompressedTexture2D/CompressedTexture2D::6711383046338115494::1764198100::1764155963::1::::<><><>0<>0<>1067d5f810bff521c118212d557db8a2<>res://.godot/imported/1.png-3e921cd9258c199efd76bd17ffb94c6c.ctex::
 2.png::CompressedTexture2D/CompressedTexture2D::5270289921245025876::1764198100::1764155963::1::::<><><>0<>0<>7ff6fbccf1c818f5c70cd0256dbd73e8<>res://.godot/imported/2.png-404f373351221c766dd17b901458a846.ctex::
@@ -35,13 +35,15 @@ front_wheel1.png::CompressedTexture2D/CompressedTexture2D::7959852764973287006::
 front_wheel2.png::CompressedTexture2D/CompressedTexture2D::2756302037510351141::1764198100::1764155963::1::::<><><>0<>0<>91b820dd2c5707bf86e95101ffe553ed<>res://.godot/imported/front_wheel2.png-68f9890c36ba037122521e22fd1442c3.ctex::
 health_bar_icon.png::CompressedTexture2D/CompressedTexture2D::1097792147070300897::1764198100::1764155963::1::::<><><>0<>0<>28f0005761b53cd3ddedd3e14b97a0bf<>res://.godot/imported/health_bar_icon.png-4c3cc33f372dac8420be77a776df7e4e.ctex::
 target.png::CompressedTexture2D/CompressedTexture2D::951236949752277515::1764198100::1764155963::1::::<><><>0<>0<>2de04269cdddcf7ba0d4ca772a45873d<>res://.godot/imported/target.png-8d7fa4674bf40865940ebf36104e4130.ctex::
-::res://map/::1764155963
+::res://map/::1764557593
 CyberPunk.tscn::PackedScene::7628279748805354877::1764198100::0::1::::<><><>0<>0<><>::uid://ri82cej7owu::::res://img/Cyberpunk_tile.png<>uid://bkvktn0c6bd7w::::res://character_silver.tscn
 Desert Clean.png::CompressedTexture2D/CompressedTexture2D::6446924350588691229::1764198100::1764155963::1::::<><><>0<>0<>39b93e707fd9895f9cc99aca9a410b0e<>res://.godot/imported/Desert Clean.png-0d2de91e682b0f01689d2cd1eed20e1a.ctex::
-DesertMap_test2.tscn::PackedScene::8793216468737643151::1764198100::0::1::::<><><>0<>0<><>::uid://cx365w48gs7rl::::res://map/Desert Clean.png<>uid://b03u3tcdyf0he::::res://desert_sand.png
-::res://Scripts/::1764392225
-bullet_red.gd::GDScript::8329444449015505432::1764391981::0::1::::<>RigidBody2D<><>0<>0<><>::
-bullet_silver.gd::GDScript::3231068553669044073::1764391981::0::1::::<>RigidBody2D<><>0<>0<><>::
+DesertMap_test2.tscn::PackedScene::8793216468737643151::1764557593::0::1::::<><><>0<>0<><>::uid://cfo476rs83dka::::res://map/desert_sand.png<>uid://cx365w48gs7rl::::res://map/Desert Clean.png
+desert_sand.png::CompressedTexture2D::5154506467676955600::1764557593::1764557602::1::::<><><>0<>0<>3692df0aed7149117228bd390dd1f52e<>res://.godot/imported/desert_sand.png-a34a9ef0c7ab206a19f6dbe41a32015f.ctex::
+PracticeMap.tscn::PackedScene::8469463215201798189::1764557593::0::1::::<><><>0<>0<><>::uid://ri82cej7owu::::res://img/Cyberpunk_tile.png<>uid://bkvktn0c6bd7w::::res://character_silver.tscn
+::res://Scripts/::1764400972
+bullet_red.gd::GDScript::8329444449015505432::1764400435::0::1::::<>RigidBody2D<><>0<>0<><>::
+bullet_silver.gd::GDScript::3231068553669044073::1764400972::0::1::::<>RigidBody2D<><>0<>0<><>::
 health_bar.gd::GDScript::2606814192455826997::1764198100::0::1::::<>ProgressBar<><>0<>0<><>::
 player_red.gd::GDScript::7516904662871839612::1764392053::0::1::::<>CharacterBody2D<><>0<>0<><>::
 player_silver.gd::GDScript::633772030921926553::1764155893::0::1::::<>CharacterBody2D<><>0<>0<><>::

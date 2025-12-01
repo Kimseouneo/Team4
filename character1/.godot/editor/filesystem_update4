@@ -1,5 +1,5 @@
-res://test_main.tscn
-res://Scripts/bullet_red.gd
-res://final/pvp.tscn
+res://map/CyberPunk.tscn
 res://Scripts/bullet_silver.gd
+res://final/pvp.tscn
+res://map/DesertMap_test2.tscn
 res://turnmanager.gd

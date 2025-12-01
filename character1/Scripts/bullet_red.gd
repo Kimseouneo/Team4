@@ -98,7 +98,7 @@ func _fire(release_pos: Vector2):
 func _physics_process(delta):
 	if freeze:
 		if char_red:
-			global_position = char_red.global_position + Vector2(50, -10)
+			global_position = char_red.global_position + Vector2(-50, -10)
 		return
 	# 폭발 중이거나 아직 발사 안했으면 물리 연산 중지
 	if is_exploding: return
