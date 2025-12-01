@@ -107,7 +107,8 @@ char_2_right={
 
 [layer_names]
 
-2d_physics/layer_1="player"
+2d_physics/layer_1="player1"
 2d_physics/layer_2="bullets"
 2d_physics/layer_3="ENV"
 2d_physics/layer_4="Wind"
+2d_physics/layer_5="player2"

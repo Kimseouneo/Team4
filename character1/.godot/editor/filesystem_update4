@@ -1,5 +1,5 @@
-res://map/CyberPunk.tscn
-res://Scripts/bullet_silver.gd
-res://final/pvp.tscn
-res://map/DesertMap_test2.tscn
+res://Scripts/player_silver.gd
 res://turnmanager.gd
+res://Scripts/player_red.gd
+res://Scripts/bullet_silver.gd
+res://map/DesertMap_test2.tscn

@@ -27,8 +27,8 @@ position = Vector2(-20, -13)
 scale = Vector2(1, -1)
 script = ExtResource("7_mqe70")
 
-[node name="StaticBody2D" parent="." instance=ExtResource("3_6pmuh")]
-position = Vector2(557, 709)
-
 [node name="TurnManager" type="Node2D" parent="."]
 script = ExtResource("4_ik2x8")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("3_6pmuh")]
+position = Vector2(534, 706)
