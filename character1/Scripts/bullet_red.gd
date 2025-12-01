@@ -16,7 +16,7 @@ var initial_arrow_scale: Vector2
 # 화살표 노드 연결
 @onready var arrow_sprite: Sprite2D = $Arrow
 # character의 global position 받기 위함
-@onready var char_silver : Node2D = get_parent()
+@onready var char_red : Node2D = get_parent()
 @onready var turn_manager = $"../../TurnManager"
 @onready var collision_shape = $CollisionShape2D  # bullet의 충돌 모양 노드
 var active = false
@@ -67,12 +67,10 @@ func _input(event):
 
 # 화살표의 회전과 길이를 계산하는 함수
 func update_arrow(current_mouse_pos: Vector2):
-	# 1. 드래그 벡터 계산 (시작점 - 현재 마우스 위치)
-	# 마우스를 뒤로 당기면(왼쪽), 화살표는 앞으로(오른쪽) 나가야 하므로 순서 주의
-	var aim_vector = drag_start - current_mouse_pos
+	var aim_vector = Vector2(-(current_mouse_pos.x - drag_start.x), current_mouse_pos.y - drag_start.y)
 	
 	# 2. 회전: 벡터의 각도를 화살표에 적용
-	arrow_sprite.rotation = aim_vector.angle()
+	arrow_sprite.rotation = aim_vector.angle() + PI
 	
 	# 3. 길이(Scale): 드래그 거리에 비례해서 늘리기
 	var drag_distance = aim_vector.length()
@@ -92,16 +90,17 @@ func _fire(release_pos: Vector2):
 	var drag_vector = release_pos - drag_start
 	var launch_vector = -drag_vector * power
 	linear_velocity = launch_vector
-	print("Launch velocity:", linear_velocity)
 	
+	print("Launch velocity:", linear_velocity)
+	#0.2초간 충돌 방
 	collision_shape.disabled = true
 	await get_tree().create_timer(0.2).timeout
 	collision_shape.disabled = false
 
 func _physics_process(delta):
 	if freeze:
-		if char_silver:
-			global_position = char_silver.global_position + Vector2(50, -10)
+		if char_red:
+			global_position = char_red.global_position + Vector2(50, -10)
 		return
 	# 폭발 중이거나 아직 발사 안했으면 물리 연산 중지
 	if is_exploding: return
@@ -156,7 +155,7 @@ func stop_bullet():
 	sprite.visible = false
 	animated_sprite.visible = false
 	arrow_sprite.visible = false
-	global_position = char_silver.global_position + Vector2(50, -10)
+	global_position = char_red.global_position + Vector2(50, -10)
 
 func _stop_physics():
 	freeze = true             # 위치 고정

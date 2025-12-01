@@ -102,7 +102,6 @@ func explode():
 	is_exploding = true
 
 	arrow_sprite.visible = false
-	call_deferred("_stop_physics")
 
 	sprite.visible = false
 	animated_sprite.visible = true
