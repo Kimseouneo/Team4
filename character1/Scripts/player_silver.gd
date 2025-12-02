@@ -70,11 +70,8 @@ func _physics_process(delta: float) -> void:
 	# 실제 이동은 제일 마지막에
 	move_and_slide()
 
-	#수동 턴 전환
-	if Input.is_action_just_pressed("ui_accept") and active:
-		get_parent().get_node("Turnmanager").next_turn()
-
 
 func _on_bullet_red_body_entered(body: Node) -> void:
-	take_damage(1)
-	_update_health_bar() # Replace with function body.
+	if body.name == "char_silver":
+		take_damage(1)
+		_update_health_bar() # Replace with function body.

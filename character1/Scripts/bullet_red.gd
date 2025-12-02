@@ -28,22 +28,18 @@ func _ready():
 	start_pos = global_position
 	freeze = true
 	gravity_scale = 0
-	linear_velocity = Vector2.ZERO
-	sprite.visible = false    # 처음엔 안 보이게 설정
-	animated_sprite.visible = false # 폭발 애니메이션은 평소엔 숨김
+	sprite.visible = false
+	animated_sprite.visible = false
 	arrow_sprite.visible = false
 	initial_arrow_scale = arrow_sprite.scale
-	
-	# [중요] RigidBody2D의 충돌 감지를 위해 필수적인 설정
-	contact_monitor = true #충돌 감지 on
-	max_contacts_reported = 2 #충돌 시 한번에 인식할 물체의 개수
-	
-	# 충돌 시그널 연결 (에디터에서 연결해도 되지만 코드로 하면 안전합니다)
+	contact_monitor = true
+	max_contacts_reported = 1
 	body_entered.connect(_on_body_entered)
 	
 func _input(event):
 	# 폭발 중이면 입력 무시
-	if not active or is_exploding: return
+	if not active or is_exploding:
+		return
 	
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
@@ -65,7 +61,7 @@ func _input(event):
 	elif event is InputEventMouseMotion and is_dragging:
 		update_arrow(event.position)
 
-# 화살표의 회전과 길이를 계산하는 함수
+# 화살표의 회전과 길이를 계산하는 함수, silver와 좌우 대
 func update_arrow(current_mouse_pos: Vector2):
 	var aim_vector = Vector2(-(current_mouse_pos.x - drag_start.x), current_mouse_pos.y - drag_start.y)
 	
@@ -92,7 +88,7 @@ func _fire(release_pos: Vector2):
 	linear_velocity = launch_vector
 	
 	print("Launch velocity:", linear_velocity)
-	#0.2초간 충돌 방
+	#0.2초간 충돌 방지
 	collision_shape.disabled = true
 	await get_tree().create_timer(0.2).timeout
 	collision_shape.disabled = false
@@ -100,7 +96,7 @@ func _fire(release_pos: Vector2):
 func _physics_process(delta):
 	if freeze:
 		if char_red:
-			global_position = char_red.global_position + Vector2(50, -10)
+			global_position = char_red.global_position + Vector2(-50, -10)
 		return
 	# 폭발 중이거나 아직 발사 안했으면 물리 연산 중지
 	if is_exploding: return
@@ -112,40 +108,46 @@ func _physics_process(delta):
 		rotation = linear_velocity.angle()
 		
 # 충돌 감지 함수
-func _on_body_entered(_body: Node):
-	# 이미 폭발 중이면 무시 (중복 충돌 방지)
-	if is_exploding: return
+func _on_body_entered(body: Node):
+	if is_exploding:
+		return
 	
+	if body.name == "Ground":
+		explode()
+	if body.name == "char_red" or "char_silver":
+		explode()
 	explode()
 
 # 폭발 처리 함수
 func explode():
-	if is_exploding: return
+	if is_exploding:
+		return
 	is_exploding = true
-	
-	# 화살표가 혹시 켜져있다면 확실히 끔
+	var collision_pos = global_position #충돌 지점 저장
 	arrow_sprite.visible = false
-	
-	# [중요] 물리 엔진이 계산 중일 때 속성을 바꾸면 무시될 수 있으므로
-	# call_deferred 나 set_deferred를 사용해야 안전하게 멈춥니다.
-	call_deferred("_stop_physics")
-	
-	# 이미지 교체
 	sprite.visible = false
-	animated_sprite.visible = true
 	
-	# 애니메이션 재생 (이제 Loop가 꺼져있어야 함)
-	animated_sprite.play("explode")
-	
-	# 애니메이션 끝날 때까지 대기
-	await animated_sprite.animation_finished
-	await get_tree().create_timer(0.5).timeout
-	# 총알 비활성화 만들기
-	stop_bullet()	
-	
-	if turn_manager:
+	var explosion = AnimatedSprite2D.new()
+	explosion.sprite_frames = animated_sprite.sprite_frames
+	explosion.animation = "explode"
+	explosion.global_position = collision_pos
+	explosion.play()
+	get_tree().current_scene.add_child(explosion) 
+
+
+	# 폭발 애니메이션 끝까지 기다린 후
+	await explosion.animation_finished
+
+	explosion.queue_free()
+	stop_bullet()
+
+	# 턴 전환
+	if turn_manager and active:
+		active = false  # 비활성화
+		print(">>> Bullet exploded! Passing turn...")
 		turn_manager.next_turn()
-# 물리 동작을 멈추는 함수를 따로 분리 (call_deferred로 호출됨)
+
+
 func stop_bullet():
 	is_exploding = false
 	freeze = true
@@ -154,8 +156,10 @@ func stop_bullet():
 	rotation = 0
 	sprite.visible = false
 	animated_sprite.visible = false
-	arrow_sprite.visible = false
-	global_position = char_red.global_position + Vector2(50, -10)
+	arrow_sprite.visible = false	
+	if char_red:
+		global_position = char_red.global_position + Vector2(-50, -10)
+		start_pos = global_position
 
 func _stop_physics():
 	freeze = true             # 위치 고정

@@ -16,12 +16,14 @@ var start_pos := Vector2.ZERO
 @onready var char_owner: Node2D = get_parent()
 @onready var turn_manager: Node = $"../../Turnmanager"
 
-var active: bool = false
+var active = false #초기에는 비활성화
 
-func set_active(state: bool):
+func set_active(state):
 	active = state
 
 func _ready():
+	start_pos = global_position # 탄 시작 지점 저장
+		
 	freeze = true
 	gravity_scale = 0
 	sprite.visible = false
@@ -65,6 +67,7 @@ func _fire(release_pos: Vector2):
 	freeze = false
 	gravity_scale = 1
 	sprite.visible = true
+	
 	var drag_vector = release_pos - drag_start
 	var launch_vector = -drag_vector * power
 	linear_velocity = launch_vector
@@ -89,10 +92,10 @@ func _physics_process(delta: float):
 func _on_body_entered(body: Node):
 	if is_exploding:
 		return
-	if body == char_owner:
-		return # 자기 자신과 충돌 방지
-	explode()
-
+	if body.name == "Ground":
+		explode()
+	if body.name == "char_red" or "char_silver":
+		explode()
 # -------------------------
 # 폭발 및 턴 전환 처리
 # -------------------------
@@ -100,24 +103,28 @@ func explode():
 	if is_exploding:
 		return
 	is_exploding = true
-
+	var collision_pos = global_position #충돌 지점 저장
 	arrow_sprite.visible = false
-
 	sprite.visible = false
-	animated_sprite.visible = true
-	animated_sprite.play("explode")
+	
+	var explosion = AnimatedSprite2D.new()
+	explosion.sprite_frames = animated_sprite.sprite_frames
+	explosion.animation = "explode"
+	explosion.global_position = collision_pos
+	explosion.play()
+	get_tree().current_scene.add_child(explosion) 
 
-	# 🔹 폭발 애니메이션 끝까지 기다린 후
-	await animated_sprite.animation_finished
-	await get_tree().create_timer(0.5).timeout
-
+	await explosion.animation_finished
+	# 폭발 애니메이션 끝까지 기다린 후
+	explosion.queue_free()
 	stop_bullet()
 
-	# 🔹 턴 전환
+	# 턴 전환
 	if turn_manager and active:
+		active = false  # 비활성화
 		print(">>> Bullet exploded! Passing turn...")
 		turn_manager.next_turn()
-	active = false  # 비활성화
+
 
 func stop_bullet():
 	is_exploding = false

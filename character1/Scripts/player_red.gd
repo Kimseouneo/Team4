@@ -41,9 +41,11 @@ func _update_body_texture() -> void:
 		body_sprite.texture = normal_texture
 	elif health > 3:
 		body_sprite.texture = mid_damage_texture
-	else:
+	if health <= 3:
 		body_sprite.texture = heavy_damage_texture
-
+		if health <= 0:
+			print("game_over")
+	
 func _physics_process(delta: float) -> void:
 	if not active:
 		return
@@ -73,10 +75,7 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-	# 턴 수동 전환
-	if Input.is_action_just_pressed("ui_accept")and active:
-		get_parent().get_node("Turnmanager").next_turn()
-
 func _on_bullet_silver_body_entered(body: Node) -> void:
-	take_damage(1)
-	_update_health_bar()
+	if body.name == "char_red":
+		take_damage(1)
+		_update_health_bar()
