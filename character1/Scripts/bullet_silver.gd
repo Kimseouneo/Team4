@@ -8,7 +8,7 @@ var is_dragging := false
 var drag_start := Vector2.ZERO
 var is_exploding := false
 var initial_arrow_scale: Vector2
-
+var start_pos := Vector2.ZERO
 @onready var sprite: Sprite2D = $Bullet
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var arrow_sprite: Sprite2D = $Arrow
@@ -130,6 +130,7 @@ func stop_bullet():
 	arrow_sprite.visible = false
 	if char_owner:
 		global_position = char_owner.global_position + Vector2(50, -10)
+		start_pos = global_position
 
 func _stop_physics():
 	freeze = true

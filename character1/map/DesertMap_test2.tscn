@@ -496,3 +496,6 @@ scale = Vector2(-0.5, 0.5)
 
 [node name="bullet_red" parent="char_red" instance=ExtResource("5_hde6q")]
 script = ExtResource("8_y3vnr")
+
+[connection signal="body_entered" from="char_silver/bullet_silver" to="char_red" method="_on_bullet_silver_body_entered"]
+[connection signal="body_entered" from="char_red/bullet_red" to="char_silver" method="_on_bullet_red_body_entered"]

@@ -17,7 +17,7 @@ var initial_arrow_scale: Vector2
 @onready var arrow_sprite: Sprite2D = $Arrow
 # character의 global position 받기 위함
 @onready var char_red : Node2D = get_parent()
-@onready var turn_manager = $"../../TurnManager"
+@onready var turn_manager = $"../../Turnmanager"
 @onready var collision_shape = $CollisionShape2D  # bullet의 충돌 모양 노드
 var active = false
 

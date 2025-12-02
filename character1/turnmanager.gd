@@ -21,7 +21,7 @@ func _start_turn(player, bullet):
 	if turn_timer:
 		turn_timer.queue_free()
 	turn_timer = Timer.new()
-	turn_timer.wait_time = 9.0
+	turn_timer.wait_time = 5.0
 	turn_timer.one_shot = true
 	add_child(turn_timer)
 	turn_timer.start()

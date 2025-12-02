@@ -77,5 +77,6 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept")and active:
 		get_parent().get_node("Turnmanager").next_turn()
 
-func _on_bullet_body_entered(body: Node) -> void:
+func _on_bullet_silver_body_entered(body: Node) -> void:
 	take_damage(1)
+	_update_health_bar()
