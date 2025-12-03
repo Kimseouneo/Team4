@@ -1,6 +1,1 @@
-res://Scripts/bullet_silver.gd
 res://map/DesertMap_test2.tscn
-res://Scripts/bullet_red.gd
-res://Scripts/player_red.gd
-res://Scripts/player_silver.gd
-res://turnmanager.gd
