@@ -24,6 +24,9 @@ var initial_arrow_scale: Vector2
 @onready var collision_shape = $CollisionShape2D  # bullet의 충돌 모양 노드
 var active = false
 
+func set_active(state: bool):
+	active = state
+
 func destroy_tiles_around_explosion()->void:
 	if map_layer==null:
 		return
@@ -50,10 +53,6 @@ func destroy_tiles_around_explosion()->void:
 				if tile_data != null:
 					# 타일 삭제
 					map_layer.erase_cell(cell)
-
-
-func set_active(state: bool):
-	active = state
 
 func _ready():
 	start_pos = global_position

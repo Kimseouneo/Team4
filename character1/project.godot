@@ -11,7 +11,6 @@ config_version=5
 [application]
 
 config/name="character1"
-run/main_scene="uid://bwl3hy5b8rywc"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
 [display]

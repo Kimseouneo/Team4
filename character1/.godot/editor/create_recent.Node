@@ -1,4 +1,5 @@
 Node2D
+Node
 CharacterBody2D
 CollisionPolygon2D
 CollisionShape2D

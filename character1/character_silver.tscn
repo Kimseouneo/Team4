@@ -8,12 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://bda8wk6dsdjfb" path="res://img/body1_dmg_2.png" id="4_1f8qr"]
 [ext_resource type="PackedScene" uid="uid://drvgkns1v81b2" path="res://health_bar.tscn" id="5_1f8qr"]
 
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5msp"]
 size = Vector2(156, 128.5)
 
 [node name="char_silver" type="CharacterBody2D"]
-position = Vector2(268, 144)
+position = Vector2(-5, 1)
 collision_mask = 6
 script = ExtResource("1_5qacm")
 normal_texture = ExtResource("2_5qacm")
@@ -42,3 +41,5 @@ texture = ExtResource("2_5qacm")
 [node name="FrontWheel1" type="Sprite2D" parent="."]
 position = Vector2(-38, 45)
 texture = ExtResource("3_m4gea")
+
+[node name="Anchor" type="Node2D" parent="."]

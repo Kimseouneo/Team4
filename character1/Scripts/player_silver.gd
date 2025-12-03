@@ -74,4 +74,4 @@ func _physics_process(delta: float) -> void:
 func _on_bullet_red_body_entered(body: Node) -> void:
 	if body.name == "char_silver":
 		take_damage(1)
-		_update_health_bar() # Replace with function body.
+		_update_health_bar()
