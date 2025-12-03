@@ -1,0 +1,329 @@
+[gd_scene load_steps=24 format=3 uid="uid://dfs4vt70pnlbw"]
+
+[ext_resource type="Script" uid="uid://887c1kif07rn" path="res://Scripts/menu.gd" id="1_lti8b"]
+[ext_resource type="Texture2D" uid="uid://stbqmepwxu5f" path="res://img/menuBackground.png" id="2_ouk20"]
+[ext_resource type="FontFile" uid="uid://dm7jtsbu886cg" path="res://fonts/AllertaStencil-Regular.ttf" id="3_mae5d"]
+[ext_resource type="FontFile" uid="uid://djniumc2be3j7" path="res://fonts/SairaStencilOne-Regular.ttf" id="4_4hy44"]
+[ext_resource type="Texture2D" uid="uid://687n4mcx863b" path="res://img/button_grey.png" id="4_ytr4m"]
+[ext_resource type="Texture2D" uid="uid://dhwb6517nm6dq" path="res://img/button_red.png" id="5_l48gv"]
+[ext_resource type="Texture2D" uid="uid://bfe6mubsamm1y" path="res://img/minimap_arrow_b.png" id="7_ecwwl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4hy44"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+texture = ExtResource("4_ytr4m")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ecwwl"]
+texture = ExtResource("5_l48gv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l48gv"]
+texture = ExtResource("5_l48gv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kk3ma"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+texture = ExtResource("4_ytr4m")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nrnbx"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+texture = ExtResource("5_l48gv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iqepy"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+texture = ExtResource("5_l48gv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3ls4m"]
+texture = ExtResource("7_ecwwl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5h80m"]
+texture = ExtResource("7_ecwwl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w25hu"]
+texture = ExtResource("7_ecwwl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h1wq0"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+texture = ExtResource("4_ytr4m")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dwrpx"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+texture = ExtResource("5_l48gv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g7jxm"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+texture = ExtResource("5_l48gv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jspdm"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+texture = ExtResource("4_ytr4m")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oxnod"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+texture = ExtResource("4_ytr4m")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gd0jp"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+texture = ExtResource("5_l48gv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4ndjb"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+texture = ExtResource("5_l48gv")
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lti8b")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 2912.0
+offset_bottom = 1440.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_ouk20")
+stretch_mode = 3
+
+[node name="TitleScreen" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="gameStart" type="Button" parent="TitleScreen"]
+layout_mode = 0
+offset_left = 450.0
+offset_top = 400.0
+offset_right = 554.0
+offset_bottom = 454.0
+theme_override_fonts/font = ExtResource("3_mae5d")
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxTexture_4hy44")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ecwwl")
+theme_override_styles/hover = SubResource("StyleBoxTexture_l48gv")
+text = "PLAY"
+
+[node name="Label" type="Label" parent="TitleScreen"]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 170.0
+offset_right = 819.0
+offset_bottom = 322.0
+theme_override_fonts/font = ExtResource("4_4hy44")
+theme_override_font_sizes/font_size = 96
+text = "REAL STEAL"
+
+[node name="ModeSelect" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ModeSelect"]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 230.0
+offset_right = 623.0
+offset_bottom = 460.0
+theme_override_constants/separation = 24
+
+[node name="tutorial" type="Button" parent="ModeSelect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_mae5d")
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxTexture_kk3ma")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nrnbx")
+theme_override_styles/hover = SubResource("StyleBoxTexture_iqepy")
+text = "Tutorial"
+
+[node name="pve" type="Button" parent="ModeSelect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_mae5d")
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxTexture_kk3ma")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nrnbx")
+theme_override_styles/hover = SubResource("StyleBoxTexture_iqepy")
+text = "PVE"
+
+[node name="pvp" type="Button" parent="ModeSelect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_mae5d")
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxTexture_kk3ma")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nrnbx")
+theme_override_styles/hover = SubResource("StyleBoxTexture_iqepy")
+text = "PVP"
+
+[node name="BackBtn" type="Button" parent="ModeSelect"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 13.0
+offset_bottom = 13.0
+scale = Vector2(7, 7)
+theme_override_styles/normal = SubResource("StyleBoxTexture_3ls4m")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5h80m")
+theme_override_styles/hover = SubResource("StyleBoxTexture_w25hu")
+
+[node name="MapSelect" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MapSelect"]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 300.0
+offset_right = 558.0
+offset_bottom = 374.0
+theme_override_constants/separation = 94
+
+[node name="cyberpunk" type="Button" parent="MapSelect/HBoxContainer"]
+custom_minimum_size = Vector2(244, 74)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_mae5d")
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxTexture_h1wq0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dwrpx")
+theme_override_styles/hover = SubResource("StyleBoxTexture_g7jxm")
+text = "Cyberpunk"
+
+[node name="desert" type="Button" parent="MapSelect/HBoxContainer"]
+custom_minimum_size = Vector2(244, 74)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_mae5d")
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxTexture_h1wq0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dwrpx")
+theme_override_styles/hover = SubResource("StyleBoxTexture_g7jxm")
+text = "Desert"
+
+[node name="BackBtn" type="Button" parent="MapSelect"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 13.0
+offset_bottom = 13.0
+scale = Vector2(7, 7)
+theme_override_styles/normal = SubResource("StyleBoxTexture_3ls4m")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5h80m")
+theme_override_styles/hover = SubResource("StyleBoxTexture_w25hu")
+
+[node name="NameInput" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NameInput"]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 230.0
+offset_right = 901.0
+offset_bottom = 402.0
+theme_override_constants/separation = 124
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NameInput/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="player1" type="Label" parent="NameInput/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_mae5d")
+theme_override_font_sizes/font_size = 46
+theme_override_styles/normal = SubResource("StyleBoxTexture_jspdm")
+text = "Player1"
+
+[node name="LineEdit1" type="LineEdit" parent="NameInput/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_mae5d")
+theme_override_font_sizes/font_size = 46
+placeholder_text = "Enter name..."
+expand_to_text_length = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="NameInput/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="player2" type="Label" parent="NameInput/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_mae5d")
+theme_override_font_sizes/font_size = 46
+theme_override_styles/normal = SubResource("StyleBoxTexture_jspdm")
+text = "Player2"
+
+[node name="LineEdit2" type="LineEdit" parent="NameInput/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_mae5d")
+theme_override_font_sizes/font_size = 46
+placeholder_text = "Enter name..."
+expand_to_text_length = true
+
+[node name="next" type="Button" parent="NameInput"]
+layout_mode = 0
+offset_left = 465.0
+offset_top = 500.0
+offset_right = 627.0
+offset_bottom = 566.0
+theme_override_fonts/font = ExtResource("3_mae5d")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxTexture_oxnod")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gd0jp")
+theme_override_styles/hover = SubResource("StyleBoxTexture_4ndjb")
+text = "START!"
+
+[node name="BackBtn" type="Button" parent="NameInput"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 13.0
+offset_bottom = 13.0
+scale = Vector2(7, 7)
+theme_override_styles/normal = SubResource("StyleBoxTexture_3ls4m")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5h80m")
+theme_override_styles/hover = SubResource("StyleBoxTexture_w25hu")
+
+[connection signal="pressed" from="TitleScreen/gameStart" to="." method="_on_game_start_pressed"]
+[connection signal="pressed" from="ModeSelect/VBoxContainer/tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="ModeSelect/VBoxContainer/pve" to="." method="_on_pve_pressed"]
+[connection signal="pressed" from="ModeSelect/VBoxContainer/pvp" to="." method="_on_pvp_pressed"]
+[connection signal="pressed" from="ModeSelect/BackBtn" to="." method="_on_mode_back_btn_pressed"]
+[connection signal="pressed" from="MapSelect/HBoxContainer/cyberpunk" to="." method="_on_cyberpunk_pressed"]
+[connection signal="pressed" from="MapSelect/HBoxContainer/desert" to="." method="_on_desert_pressed"]
+[connection signal="pressed" from="MapSelect/BackBtn" to="." method="_on_map_back_btn_pressed"]
+[connection signal="pressed" from="NameInput/next" to="." method="_on_name_next_pressed"]
+[connection signal="pressed" from="NameInput/BackBtn" to="." method="_on_name_back_btn_pressed"]
