@@ -18,7 +18,7 @@ var start_pos := Vector2.ZERO
 @onready var collision_shape = $CollisionShape2D
 @onready var char_owner: Node2D = get_parent()
 @onready var turn_manager: Node = $"../../Turnmanager"
-
+@onready var anchor : Node2D = get_parent().get_node("Anchor")
 var active = false #초기에는 비활성화
 
 func destroy_tiles_around_explosion()->void:
@@ -53,7 +53,7 @@ func set_active(state):
 
 func _ready():
 	start_pos = global_position # 탄 시작 지점 저장
-		
+	
 	freeze = true
 	gravity_scale = 0
 	sprite.visible = false
@@ -104,7 +104,7 @@ func _fire(release_pos: Vector2):
 
 	# 발사 직후 0.2초 동안 자기 자신과의 충돌 방지
 	collision_shape.disabled = true
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(0.1).timeout
 	collision_shape.disabled = false
 
 # 물리 및 충돌 처리
@@ -172,10 +172,10 @@ func stop_bullet():
 	linear_velocity = Vector2.ZERO
 	rotation = 0
 	sprite.visible = false
-	animated_sprite.visible = false
-	arrow_sprite.visible = false
+	animated_sprite.visible = false	#애니메이션 이미지 안 보이도록 함
+	arrow_sprite.visible = false		#화살표 이미지 안 보이도록 함
 	if char_owner:
-		global_position = char_owner.global_position + Vector2(50, -10)
+		global_position = anchor.global_position + Vector2(50, -10)
 		start_pos = global_position
 
 func _stop_physics():

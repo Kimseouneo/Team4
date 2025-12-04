@@ -1,7 +1,2 @@
-res://map/DesertMap_test2.tscn
-res://Scripts/bullet_red.gd
+res://Scripts/TM.gd
 res://Scripts/bullet_silver.gd
-res://map/PracticeMap.tscn
-res://map/TM.gd
-res://character_silver.tscn
-res://Scripts/player_silver.gd

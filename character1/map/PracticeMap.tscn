@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d4d76733o4pyn" path="res://img/concrete_tile.png" id="3_1rhen"]
 [ext_resource type="PackedScene" uid="uid://2rnhmeok7h2b" path="res://bullet.tscn" id="5_luebv"]
 [ext_resource type="Script" uid="uid://bmbfhyos4b20t" path="res://Scripts/bullet_silver.gd" id="6_1ygy7"]
-[ext_resource type="Script" uid="uid://b43dvvi61nirv" path="res://map/TM.gd" id="7_1ygy7"]
+[ext_resource type="Script" uid="uid://b43dvvi61nirv" path="res://Scripts/TM.gd" id="7_1ygy7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1rhen"]
 texture = ExtResource("1_u38i7")
@@ -3642,8 +3642,12 @@ scale = Vector2(0.3, 0.3)
 [node name="bullet" parent="char_silver" node_paths=PackedStringArray("map_layer") instance=ExtResource("5_luebv")]
 collision_layer = 2
 script = ExtResource("6_1ygy7")
+tile_size = null
 explosion_radius_px = 128.0
 map_layer = NodePath("../../ENV")
+gravity = null
+power = null
+arrow_scale_damp = null
 
 [node name="Turnmanager" type="Node" parent="."]
 script = ExtResource("7_1ygy7")

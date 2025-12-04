@@ -13,6 +13,7 @@ func _start_turn(player, bullet):
 	player.set_active(true)
 	bullet.set_active(true)
 	print(player.name, "'s TURN START")
+	print(bullet1.global_position)
 
 #턴 9초로 제한
 	if turn_timer:
@@ -27,3 +28,5 @@ func next_turn():
 	if state == State.PLAYER1_TURN:
 		player1.set_active(true)
 		bullet1.set_active(true)
+		bullet1.global_position = player1.get_node("Anchor").global_position + Vector2(50, -10)
+	print(bullet1.global_position)
