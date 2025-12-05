@@ -12,10 +12,10 @@ func _ready():
 func _start_turn(player, bullet):
 	player.set_active(true)
 	bullet.set_active(true)
-	print(player.name, "'s TURN START")
+	print(player.name, "Game START")
 	print(bullet1.global_position)
 
-#턴 9초로 제한
+#턴 5초로 제한
 	if turn_timer:
 		turn_timer.queue_free()
 	turn_timer = Timer.new()

@@ -19,6 +19,7 @@ var start_pos := Vector2.ZERO
 @onready var char_owner: Node2D = get_parent()
 @onready var turn_manager: Node = $"../../Turnmanager"
 @onready var anchor : Node2D = get_parent().get_node("Anchor")
+@onready var Target = $"../../Target"
 var active = false #초기에는 비활성화
 
 func destroy_tiles_around_explosion()->void:
@@ -125,6 +126,9 @@ func _on_body_entered(body: Node):
 	if body.name == "Ground":
 		explode()
 	if body.name == "char_red" or "char_silver":
+		explode()
+	if body.name == "Target":
+		Target.add_score(1)
 		explode()
 # -------------------------
 # 폭발 및 턴 전환 처리

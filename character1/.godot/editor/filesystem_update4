@@ -1,2 +1,4 @@
-res://Scripts/TM.gd
+res://map/PracticeMap.tscn
+res://Scripts/target.gd
 res://Scripts/bullet_silver.gd
+res://Scripts/TM.gd
