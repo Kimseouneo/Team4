@@ -484,8 +484,8 @@ tile_map_data = PackedByteArray("AAABACwAAAALAAgAAAAAACwAAAAKAAgAAAAAACsAAAAKAAc
 tile_set = SubResource("TileSet_js7nn")
 
 [node name="char_silver" parent="." instance=ExtResource("4_hde6q")]
-position = Vector2(174, 425)
-scale = Vector2(0.5, 0.5)
+position = Vector2(142, 498)
+scale = Vector2(0.2, 0.2)
 
 [node name="bullet_silver" parent="char_silver" node_paths=PackedStringArray("map_layer") instance=ExtResource("5_hde6q")]
 script = ExtResource("6_gthff")
@@ -493,8 +493,8 @@ explosion_radius_px = 128.0
 map_layer = NodePath("../../Ground")
 
 [node name="char_red" parent="." instance=ExtResource("5_a6a3t")]
-position = Vector2(953, 462)
-scale = Vector2(-0.5, 0.5)
+position = Vector2(931, 549)
+scale = Vector2(-0.2, 0.2)
 
 [node name="bullet_red" parent="char_red" node_paths=PackedStringArray("map_layer") instance=ExtResource("5_hde6q")]
 script = ExtResource("8_y3vnr")

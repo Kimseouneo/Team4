@@ -1,4 +1,3 @@
-res://map/PracticeMap.tscn
-res://Scripts/target.gd
-res://Scripts/bullet_silver.gd
-res://Scripts/TM.gd
+res://map/DesertMap_test2.tscn
+res://turnmanager.gd
+res://chracter_red.tscn

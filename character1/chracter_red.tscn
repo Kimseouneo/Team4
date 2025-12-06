@@ -8,12 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://dn2wq7o7j0a7i" path="res://img/body2_dmg_1.png" id="3_nknbf"]
 [ext_resource type="Texture2D" uid="uid://clih7k5ggsswh" path="res://img/body2_dmg_2.png" id="4_gmg4r"]
 
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7i8k5"]
 size = Vector2(156, 128.5)
 
 [node name="char_red" type="CharacterBody2D"]
-position = Vector2(382, 327)
+position = Vector2(-3, 3)
 scale = Vector2(-1, 1)
 collision_mask = 6
 script = ExtResource("1_w5os8")
@@ -42,3 +41,5 @@ texture = ExtResource("2_w5os8")
 [node name="FrontWheel1" type="Sprite2D" parent="."]
 position = Vector2(-40, 50)
 texture = ExtResource("3_i0wsu")
+
+[node name="Anchor" type="Node2D" parent="."]
