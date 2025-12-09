@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7ji5vdw1v4gc"]
+
+[ext_resource type="Texture2D" uid="uid://bnaugnhelva78" path="res://img/bet_img.png" id="1_txase"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xkjav"]
+radius = 47.042534
+
+[node name="Bet" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_txase")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xkjav")

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dpiv2mu8tj3jb"
+path="res://.godot/imported/title BGM.mp3-822796cad608ba7622422df8a0907cd7.mp3str"
+
+[deps]
+
+source_file="res://img/title BGM.mp3"
+dest_files=["res://.godot/imported/title BGM.mp3-822796cad608ba7622422df8a0907cd7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

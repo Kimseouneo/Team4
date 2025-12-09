@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dsww267cr3pnh"]
+[gd_scene load_steps=15 format=4 uid="uid://dsww267cr3pnh"]
 
 [ext_resource type="Texture2D" uid="uid://dl5yn1sd0rtbi" path="res://img/practice_bg.jpg" id="1_00nlp"]
 [ext_resource type="Texture2D" uid="uid://ri82cej7owu" path="res://img/Cyberpunk_tile.png" id="1_u38i7"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://b43dvvi61nirv" path="res://Scripts/TM.gd" id="7_1ygy7"]
 [ext_resource type="PackedScene" uid="uid://dh44r4f5badhk" path="res://target.tscn" id="7_nnfpw"]
 [ext_resource type="FontFile" uid="uid://c4b2sss0halhb" path="res://BebasNeue-Regular.ttf" id="9_avwbr"]
+[ext_resource type="Script" uid="uid://d4lsx30ijl8mf" path="res://Scripts/bet.gd" id="9_v7y04"]
+[ext_resource type="PackedScene" uid="uid://b7ji5vdw1v4gc" path="res://bet.tscn" id="10_62lya"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1rhen"]
 texture = ExtResource("1_u38i7")
@@ -3641,8 +3643,14 @@ tile_set = SubResource("TileSet_blhya")
 position = Vector2(964, 93)
 scale = Vector2(0.3, 0.3)
 
+[node name="Bet" parent="." instance=ExtResource("10_62lya")]
+position = Vector2(126, 80.99997)
+scale = Vector2(0.6, 0.6)
+collision_layer = 2
+script = ExtResource("9_v7y04")
+
 [node name="char_silver" parent="." instance=ExtResource("2_00nlp")]
-position = Vector2(888, 94)
+position = Vector2(64.00006, 576)
 scale = Vector2(0.3, 0.3)
 
 [node name="bullet" parent="char_silver" node_paths=PackedStringArray("map_layer") instance=ExtResource("5_luebv")]
