@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://dsww267cr3pnh"]
+[gd_scene load_steps=13 format=4 uid="uid://dsww267cr3pnh"]
 
 [ext_resource type="Texture2D" uid="uid://dl5yn1sd0rtbi" path="res://img/practice_bg.jpg" id="1_00nlp"]
 [ext_resource type="Texture2D" uid="uid://ri82cej7owu" path="res://img/Cyberpunk_tile.png" id="1_u38i7"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bmbfhyos4b20t" path="res://Scripts/bullet_silver.gd" id="6_1ygy7"]
 [ext_resource type="Script" uid="uid://b43dvvi61nirv" path="res://Scripts/TM.gd" id="7_1ygy7"]
 [ext_resource type="PackedScene" uid="uid://dh44r4f5badhk" path="res://target.tscn" id="7_nnfpw"]
+[ext_resource type="FontFile" uid="uid://c4b2sss0halhb" path="res://BebasNeue-Regular.ttf" id="9_avwbr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1rhen"]
 texture = ExtResource("1_u38i7")
@@ -3641,10 +3642,11 @@ position = Vector2(964, 93)
 scale = Vector2(0.3, 0.3)
 
 [node name="char_silver" parent="." instance=ExtResource("2_00nlp")]
-position = Vector2(125, 494)
+position = Vector2(888, 94)
 scale = Vector2(0.3, 0.3)
 
 [node name="bullet" parent="char_silver" node_paths=PackedStringArray("map_layer") instance=ExtResource("5_luebv")]
+position = Vector2(53.333332, 76.666664)
 collision_layer = 2
 script = ExtResource("6_1ygy7")
 tile_size = null
@@ -3657,10 +3659,20 @@ arrow_scale_damp = null
 [node name="Turnmanager" type="Node" parent="."]
 script = ExtResource("7_1ygy7")
 
-[node name="Score" type="TextEdit" parent="."]
-offset_left = 389.0
-offset_top = 2.0
-offset_right = 695.0
-offset_bottom = 74.0
+[node name="Score" type="Panel" parent="."]
+offset_left = 376.0
+offset_top = 1.0
+offset_right = 710.0
+offset_bottom = 85.0
+
+[node name="ScoreLabel" type="Label" parent="Score"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 334.0
+offset_bottom = 83.0
+theme_override_fonts/font = ExtResource("9_avwbr")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="body_entered" from="char_silver/bullet" to="Target" method="_on_bullet_body_entered"]
