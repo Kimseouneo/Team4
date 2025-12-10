@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcui3o5cnlrwq"]
+
+[ext_resource type="Texture2D" uid="uid://cchlf06c5lvkc" path="res://shooter.png" id="1_2ksf3"]
+[ext_resource type="Script" uid="uid://cyr3e3grykgnc" path="res://shooter.gd" id="1_ws4nn"]
+[ext_resource type="PackedScene" uid="uid://dywoosleyan4x" path="res://TurretBullet.tscn" id="3_q15gm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3gpo"]
+size = Vector2(133, 78)
+
+[node name="Turret" type="StaticBody2D"]
+z_index = 1
+script = ExtResource("1_ws4nn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.5258789e-05, 1.5616417e-05)
+scale = Vector2(0.2785888, 0.2785888)
+texture = ExtResource("1_2ksf3")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+
+[node name="FireTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, -2)
+shape = SubResource("RectangleShape2D_p3gpo")
+
+[node name="Turret" parent="." instance=ExtResource("3_q15gm")]
+position = Vector2(-18, -8)
+
+[node name="Camera2D" type="Camera2D" parent="."]
