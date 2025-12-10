@@ -14,7 +14,7 @@ var initial_arrow_scale: Vector2
 var start_pos := Vector2.ZERO
 @onready var sprite: Sprite2D = $Bullet
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var arrow_sprite: Sprite2D = $Arrow
+@onready var arrow_sprite = $"."
 @onready var collision_shape = $CollisionShape2D
 @onready var char_owner: Node2D = get_parent()
 @onready var turn_manager: Node = $"../../Turnmanager"
@@ -54,7 +54,6 @@ func set_active(state):
 
 func _ready():
 	start_pos = global_position # 탄 시작 지점 저장
-	
 	freeze = true
 	gravity_scale = 0
 	sprite.visible = false
@@ -87,26 +86,34 @@ func _input(event):
 	elif event is InputEventMouseMotion and is_dragging:
 		update_arrow(event.position)
 
-func update_arrow(current_mouse_pos: Vector2):
-	var aim_vector = drag_start - current_mouse_pos
-	arrow_sprite.rotation = aim_vector.angle()
-	var drag_distance = aim_vector.length()
-	var stretch_ratio = clamp(drag_distance / arrow_scale_damp, 1.0, 3.0)
-	arrow_sprite.scale = Vector2(initial_arrow_scale.x * stretch_ratio, initial_arrow_scale.y)
+func update_arrow(mouse_pos: Vector2):
+	# 1) 화살표의 위치를 항상 탄 위치로 고정
+	arrow_sprite.global_position = global_position
 
+	# 2) 방향 벡터 = (마우스 - 탄)
+	var dir = mouse_pos - global_position
+	arrow_sprite.rotation = dir.angle()  # ← 화살표의 방향
+
+	# 3) 화살표 길이(스케일) 조절
+	var dist = dir.length()
+	var stretch_ratio = clamp(dist / arrow_scale_damp, 1.0, 3.0)
+	arrow_sprite.scale = Vector2(
+		initial_arrow_scale.x * stretch_ratio,
+		initial_arrow_scale.y
+	)
 func _fire(release_pos: Vector2):
+	start_pos = char_owner.global_position+ Vector2(50, 10)
 	freeze = false
 	gravity_scale = 1
 	sprite.visible = true
 	
-	var drag_vector = release_pos - drag_start
-	var launch_vector = -drag_vector * power
-	linear_velocity = launch_vector
-
-	# 발사 직후 0.2초 동안 자기 자신과의 충돌 방지
 	collision_shape.disabled = true
 	await get_tree().create_timer(0.1).timeout
 	collision_shape.disabled = false
+	
+	var drag_vector = release_pos - drag_start
+	var launch_vector = -drag_vector * power
+	linear_velocity = launch_vector
 
 # 물리 및 충돌 처리
 func _physics_process(delta: float):
@@ -124,9 +131,12 @@ func _on_body_entered(body: Node):
 	if is_exploding:
 		return
 	if body.name == "Ground":
+		print(body.name)
 		explode()
+
 	if body.name == "char_red" or "char_silver":
 		explode()
+		
 	if body.name == "Target":
 		Target.add_score(1)
 		explode()
@@ -176,11 +186,8 @@ func stop_bullet():
 	linear_velocity = Vector2.ZERO
 	rotation = 0
 	sprite.visible = false
-	animated_sprite.visible = false	#애니메이션 이미지 안 보이도록 함
+	animated_sprite.visible = false#애니메이션 이미지 안 보이도록 함
 	arrow_sprite.visible = false		#화살표 이미지 안 보이도록 함
-	if char_owner:
-		global_position = anchor.global_position + Vector2(50, -10)
-		start_pos = global_position
 
 func _stop_physics():
 	freeze = true

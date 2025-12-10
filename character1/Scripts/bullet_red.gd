@@ -91,7 +91,7 @@ func _input(event):
 	elif event is InputEventMouseMotion and is_dragging:
 		update_arrow(event.position)
 
-# 화살표의 회전과 길이를 계산하는 함수, silver와 좌우 대
+# 화살표의 회전과 길이를 계산하는 함수, silver와 좌우 대칭
 func update_arrow(current_mouse_pos: Vector2):
 	var aim_vector = Vector2(-(current_mouse_pos.x - drag_start.x), current_mouse_pos.y - drag_start.y)
 	
@@ -202,5 +202,4 @@ func _stop_physics():
 	linear_velocity = Vector2.ZERO  # 속도 0
 	angular_velocity = 0      # 회전 속도 0
 	gravity_scale = 0         # 중력 영향 제거	
-	# 혹시 모르니 물리 처리 프로세스도 끕니다
 	set_physics_process(false)
