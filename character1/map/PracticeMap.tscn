@@ -3644,17 +3644,14 @@ scale = Vector2(0.3, 0.3)
 [node name="char_silver" parent="." instance=ExtResource("2_00nlp")]
 position = Vector2(888, 94)
 scale = Vector2(0.3, 0.3)
+collision_mask = 4
 
 [node name="bullet" parent="char_silver" node_paths=PackedStringArray("map_layer") instance=ExtResource("5_luebv")]
 position = Vector2(53.333332, 76.666664)
 collision_layer = 2
 script = ExtResource("6_1ygy7")
-tile_size = null
 explosion_radius_px = 128.0
 map_layer = NodePath("../../ENV")
-gravity = null
-power = null
-arrow_scale_damp = null
 
 [node name="Turnmanager" type="Node" parent="."]
 script = ExtResource("7_1ygy7")

@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var body_sprite: Sprite2D = $Body
 @onready var health_bar: ProgressBar = $HealthBar
+@onready var bullet = $bullet_red
 
 @export var health: int = 10
 @export var max_health: int = 10
@@ -18,8 +19,9 @@ extends CharacterBody2D
 var active := false
 var is_jumping := false
 var jump_time := 0.0
+var dragging = false
 
-func set_active(state: bool) -> void:
+func set_active(state):
 	active = state
 
 func _ready() -> void:
@@ -45,8 +47,14 @@ func _update_body_texture() -> void:
 		body_sprite.texture = heavy_damage_texture
 		if health <= 0:
 			print("game_over")
-	
+
 func _physics_process(delta: float) -> void:
+	if dragging:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		if bullet:
+			bullet.global_position = global_position
+		return
 	if not active:
 		return
 

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 @onready var body_sprite: Sprite2D = $Body
 @onready var health_bar: ProgressBar = $HealthBar
-
+@onready var bullet = $bullet_silver
 @export var health = 10			#현재 체력
 @export var max_health = 10		#최대 체력
 @export var speed = 250
@@ -16,9 +16,18 @@ extends CharacterBody2D
 var active = false
 var jump_time = 0.0
 var jumping = false
+var dragging = false#드래그하는 중인지 체크용
 #활성화 비활성화
 func set_active(state: bool):
 	active = state
+
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				dragging = true
+			else:
+				dragging = false
 
 func _ready():
 	# 초기 텍스처 세팅
@@ -44,6 +53,13 @@ func _update_body_texture(): #피해의 정도에 따라 캐릭터의 texture를
 		body_sprite.texture = heavy_damage_texture
 
 func _physics_process(delta: float) -> void:
+	if dragging:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		if bullet:
+			bullet.global_position = global_position
+		return
+	
 	if not active:
 		return
 	# 중력 적용
@@ -70,8 +86,14 @@ func _physics_process(delta: float) -> void:
 	# 실제 이동은 제일 마지막에
 	move_and_slide()
 
+func _on_bullet_red_body_entered(body):
+	print(body)
+	if body.name == "char_silver":
+		take_damage(1)
+		_update_health_bar()
 
-func _on_bullet_red_body_entered(body: Node) -> void:
+
+func _on_bullet_silver_body_entered(body: Node) -> void:
 	if body.name == "char_silver":
 		take_damage(1)
 		_update_health_bar()

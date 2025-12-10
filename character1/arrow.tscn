@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://bacucxpi73rgk"]
+
+[node name="Arrow" type="Node2D"]
+scale = Vector2(0.5, 0.2)

@@ -1,3 +1,8 @@
-res://map/DesertMap_test2.tscn
 res://turnmanager.gd
-res://chracter_red.tscn
+res://Scripts/bullet_silver.gd
+res://Scripts/player_silver.gd
+res://map/DesertMap_test2.tscn
+res://Scripts/player_red.gd
+res://Scripts/bullet_red.gd
+res://arrow.tscn
+res://map/PracticeMap.tscn

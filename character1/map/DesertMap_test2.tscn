@@ -501,5 +501,6 @@ script = ExtResource("8_y3vnr")
 explosion_radius_px = 128.0
 map_layer = NodePath("../../Ground")
 
+[connection signal="body_entered" from="char_silver/bullet_silver" to="char_silver" method="_on_bullet_silver_body_entered"]
 [connection signal="body_entered" from="char_silver/bullet_silver" to="char_red" method="_on_bullet_silver_body_entered"]
 [connection signal="body_entered" from="char_red/bullet_red" to="char_silver" method="_on_bullet_red_body_entered"]

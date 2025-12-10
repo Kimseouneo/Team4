@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ct5ocpfiohrd2"
+path="res://.godot/imported/desert map BGM sample 1.mp3-7e75df735aec844f856c930e53835793.mp3str"
+
+[deps]
+
+source_file="res://img/desert map BGM sample 1.mp3"
+dest_files=["res://.godot/imported/desert map BGM sample 1.mp3-7e75df735aec844f856c930e53835793.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
