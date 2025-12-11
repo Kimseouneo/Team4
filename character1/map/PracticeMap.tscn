@@ -1,15 +1,17 @@
-[gd_scene load_steps=14 format=4 uid="uid://dsww267cr3pnh"]
+[gd_scene load_steps=16 format=4 uid="uid://dsww267cr3pnh"]
 
 [ext_resource type="Texture2D" uid="uid://dl5yn1sd0rtbi" path="res://img/practice_bg.jpg" id="1_00nlp"]
 [ext_resource type="Texture2D" uid="uid://ri82cej7owu" path="res://img/Cyberpunk_tile.png" id="1_u38i7"]
 [ext_resource type="PackedScene" uid="uid://bkvktn0c6bd7w" path="res://character_silver.tscn" id="2_00nlp"]
 [ext_resource type="Texture2D" uid="uid://d4d76733o4pyn" path="res://img/concrete_tile.png" id="3_1rhen"]
 [ext_resource type="PackedScene" uid="uid://2rnhmeok7h2b" path="res://bullet.tscn" id="5_luebv"]
+[ext_resource type="Script" uid="uid://d4lsx30ijl8mf" path="res://Scripts/bet.gd" id="6_hwdew"]
 [ext_resource type="Script" uid="uid://b43dvvi61nirv" path="res://Scripts/TM0.gd" id="7_1ygy7"]
 [ext_resource type="Script" uid="uid://bxrkogx4f7p3n" path="res://Scripts/bullet_silver0.gd" id="7_avwbr"]
 [ext_resource type="PackedScene" uid="uid://dh44r4f5badhk" path="res://target.tscn" id="7_nnfpw"]
 [ext_resource type="PackedScene" uid="uid://bacucxpi73rgk" path="res://arrow.tscn" id="8_62lya"]
 [ext_resource type="FontFile" uid="uid://c4b2sss0halhb" path="res://BebasNeue-Regular.ttf" id="9_avwbr"]
+[ext_resource type="PackedScene" uid="uid://b7ji5vdw1v4gc" path="res://bet.tscn" id="9_v7y04"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1rhen"]
 texture = ExtResource("1_u38i7")
@@ -3641,6 +3643,11 @@ tile_set = SubResource("TileSet_blhya")
 [node name="Target" parent="." instance=ExtResource("7_nnfpw")]
 position = Vector2(964, 93)
 scale = Vector2(0.3, 0.3)
+
+[node name="Bet" parent="." instance=ExtResource("9_v7y04")]
+position = Vector2(307, 187.99997)
+scale = Vector2(0.3, 0.3)
+script = ExtResource("6_hwdew")
 
 [node name="char_silver" parent="." instance=ExtResource("2_00nlp")]
 position = Vector2(64.00006, 576)

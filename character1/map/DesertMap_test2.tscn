@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://dxjq8xb8yqd6f"]
+[gd_scene load_steps=14 format=4 uid="uid://dxjq8xb8yqd6f"]
 
 [ext_resource type="Texture2D" uid="uid://cfo476rs83dka" path="res://map/desert_sand.png" id="1_4rxgm"]
 [ext_resource type="Texture2D" uid="uid://cx365w48gs7rl" path="res://map/Desert Clean.png" id="1_swmhe"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://bacucxpi73rgk" path="res://arrow.tscn" id="7_y3vnr"]
 [ext_resource type="PackedScene" uid="uid://bcui3o5cnlrwq" path="res://turret/Turret1.tscn" id="8_gthff"]
 [ext_resource type="Script" uid="uid://t5lw6bswx2rb" path="res://Scripts/TM1.gd" id="8_y3vnr"]
+[ext_resource type="PackedScene" uid="uid://dywoosleyan4x" path="res://turret/TurretBullet.tscn" id="9_y3vnr"]
+[ext_resource type="PackedScene" uid="uid://b7ji5vdw1v4gc" path="res://bet.tscn" id="10_1le7j"]
+[ext_resource type="Script" uid="uid://d4lsx30ijl8mf" path="res://Scripts/bet.gd" id="11_gliro"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gdgr7"]
 texture = ExtResource("1_4rxgm")
@@ -490,11 +493,21 @@ map_layer = NodePath("../../Ground")
 position = Vector2(-804.9999, -2694.9995)
 scale = Vector2(2.4999995, 0.9999998)
 
-[node name="Turret" parent="." instance=ExtResource("8_gthff")]
-position = Vector2(753.00006, 530)
-scale = Vector2(0.7, 0.7)
-
 [node name="Turnmanager" type="Node" parent="."]
 script = ExtResource("8_y3vnr")
+
+[node name="Turret" parent="." instance=ExtResource("8_gthff")]
+position = Vector2(944, 547)
+collision_layer = 2
+bullet_scene = ExtResource("9_y3vnr")
+
+[node name="Turret" parent="Turret" instance=ExtResource("9_y3vnr")]
+collision_layer = 2
+
+[node name="Bet" parent="." instance=ExtResource("10_1le7j")]
+position = Vector2(224, 204)
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+script = ExtResource("11_gliro")
 
 [connection signal="body_entered" from="char_silver/bullet_silver" to="char_silver" method="_on_bullet_silver_body_entered"]

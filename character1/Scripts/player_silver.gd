@@ -97,3 +97,8 @@ func _on_bullet_silver_body_entered(body: Node) -> void:
 	if body.name == "char_silver":
 		take_damage(1)
 		_update_health_bar()
+
+func _on_turretbullet_body_entered(body: Node2D) -> void:
+	if body.name == "char_silver":
+		take_damage(1)
+		_update_health_bar()

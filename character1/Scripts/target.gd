@@ -5,7 +5,7 @@ extends StaticBody2D
 @onready var bullet = $"../char_silver/bullet"
 var score = 0
 
-func _on_bullet_body_entered(body: Node) -> void:
+func _on_bullet_body_entered(body: Node):
 	if body.name == "Target":
 		add_score(1)
 		show_message("Score: " + str(score))

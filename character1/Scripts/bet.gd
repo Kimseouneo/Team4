@@ -1,23 +1,21 @@
 extends CharacterBody2D
 
-@onready var target =  $"../char_silver" #캐릭터를 직접 할당
+@onready var target = $"../char_silver"
 @export var follow_speed: float = 150.0
-@export var remove_distance: float = 60.0
 
 func _physics_process(delta):
 	if target == null:
 		return
 
-	# 캐릭터의 중심을 따라감
-	var target_pos = target.global_position
+	var direction = (target.global_position - global_position).normalized()
+	velocity = direction * follow_speed
 
-	var direction = target_pos - global_position
-	var distance = direction.length()
+	# move_and_collide를 사용해 충돌 감지
+	var collision = move_and_collide(velocity * delta)
 
-	# 너무 가까우면 삭제
-	if distance < remove_distance:
-		queue_free()
-		return
-
-	velocity = direction.normalized() * follow_speed
-	move_and_slide()
+	if collision:
+		var body = collision.get_collider()
+		if body and body.name == "char_silver":
+			if body.has_method("take_damage"):
+				body.take_damage(1)
+			queue_free()

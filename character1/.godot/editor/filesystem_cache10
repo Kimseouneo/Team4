@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1765441193
+::res://::1765446652
 arrow.tscn::PackedScene::2391768582260845754::1765371645::0::1::::<><><>0<>0<><>::uid://d2v8pjvw3x7is::::res://img/arrowImage-Photoroom.png
 BebasNeue-Regular.ttf::FontFile::6812054688110218667::1765287688::1765287703::1::::<><><>0<>0<>d7700eb76f07bf1476197298f17b7545<>res://.godot/imported/BebasNeue-Regular.ttf-c201ba017fede995e016237c87c16ce4.fontdata::
 bet.tscn::PackedScene::4651583498315903370::1765288644::0::1::::<><><>0<>0<><>::uid://bnaugnhelva78::::res://img/bet_img.png
@@ -45,13 +45,13 @@ health_bar_icon.png::CompressedTexture2D/CompressedTexture2D::109779214707030089
 practice_bg.jpg::CompressedTexture2D::7994752480450599534::1764582908::1764592182::1::::<><><>0<>0<>d7a083216bdc6b9233b2aa5c3a0e6b81<>res://.godot/imported/practice_bg.jpg-88f65ca3b8ac18a8e9c0c471d88edfe1.ctex::
 target.png::CompressedTexture2D/CompressedTexture2D::951236949752277515::1763991928::1764592182::1::::<><><>0<>0<>2de04269cdddcf7ba0d4ca772a45873d<>res://.godot/imported/target.png-8d7fa4674bf40865940ebf36104e4130.ctex::
 title BGM.mp3::AudioStreamMP3::8229933663667230907::1765287688::1765287703::1::::<><><>0<>0<>19a270d29144d3190958b08af28a9e70<>res://.godot/imported/title BGM.mp3-822796cad608ba7622422df8a0907cd7.mp3str::
-::res://map/::1765441412
+::res://map/::1765441625
 CyberPunk.tscn::PackedScene::7628279748805354877::1765348483::0::1::::<><><>0<>0<><>::uid://d3p1rw7slupxq::::res://img/cyberpunk_bg.png<>uid://ri82cej7owu::::res://img/Cyberpunk_tile.png<>uid://bkvktn0c6bd7w::::res://character_silver.tscn<>uid://d4d76733o4pyn::::res://img/concrete_tile.png
 Desert Clean.png::CompressedTexture2D/CompressedTexture2D::6446924350588691229::1764064815::1764592182::1::::<><><>0<>0<>39b93e707fd9895f9cc99aca9a410b0e<>res://.godot/imported/Desert Clean.png-0d2de91e682b0f01689d2cd1eed20e1a.ctex::
-DesertMap_test2.tscn::PackedScene::8793216468737643151::1765441600::0::1::::<><><>0<>0<><>::uid://cfo476rs83dka::::res://map/desert_sand.png<>uid://b43dvvi61nirv::::res://Scripts/TM.gd<>uid://cx365w48gs7rl::::res://map/Desert Clean.png<>uid://bkvktn0c6bd7w::::res://character_silver.tscn<>uid://2rnhmeok7h2b::::res://bullet.tscn<>uid://bmbfhyos4b20t::::res://Scripts/bullet_silver1.gd<>uid://bacucxpi73rgk::::res://arrow.tscn<>uid://bcui3o5cnlrwq::::res://turret/Turret1.tscn
+DesertMap_test2.tscn::PackedScene::8793216468737643151::1765441625::0::1::::<><><>0<>0<><>::uid://cfo476rs83dka::::res://map/desert_sand.png<>uid://cx365w48gs7rl::::res://map/Desert Clean.png<>uid://bkvktn0c6bd7w::::res://character_silver.tscn<>uid://2rnhmeok7h2b::::res://bullet.tscn<>uid://bmbfhyos4b20t::::res://Scripts/bullet_silver1.gd<>uid://bacucxpi73rgk::::res://arrow.tscn<>uid://bcui3o5cnlrwq::::res://turret/Turret1.tscn<>uid://t5lw6bswx2rb::::res://Scripts/TM1.gd
 desert_sand.png::CompressedTexture2D::5154506467676955600::1764582908::1764592182::1::::<><><>0<>0<>3692df0aed7149117228bd390dd1f52e<>res://.godot/imported/desert_sand.png-a34a9ef0c7ab206a19f6dbe41a32015f.ctex::
-PracticeMap.tscn::PackedScene::8469463215201798189::1765439377::0::1::::<><><>0<>0<><>::uid://dl5yn1sd0rtbi::::res://img/practice_bg.jpg<>uid://ri82cej7owu::::res://img/Cyberpunk_tile.png<>uid://bkvktn0c6bd7w::::res://character_silver.tscn<>uid://d4d76733o4pyn::::res://img/concrete_tile.png<>uid://2rnhmeok7h2b::::res://bullet.tscn<>uid://b43dvvi61nirv::::res://Scripts/TM.gd<>uid://bxrkogx4f7p3n::::res://Scripts/bullet_silver0.gd<>uid://dh44r4f5badhk::::res://target.tscn<>uid://bacucxpi73rgk::::res://arrow.tscn<>uid://c4b2sss0halhb::::res://BebasNeue-Regular.ttf
-::res://Scripts/::1765441192
+PracticeMap.tscn::PackedScene::8469463215201798189::1765441600::0::1::::<><><>0<>0<><>::uid://dl5yn1sd0rtbi::::res://img/practice_bg.jpg<>uid://ri82cej7owu::::res://img/Cyberpunk_tile.png<>uid://bkvktn0c6bd7w::::res://character_silver.tscn<>uid://d4d76733o4pyn::::res://img/concrete_tile.png<>uid://2rnhmeok7h2b::::res://bullet.tscn<>uid://b43dvvi61nirv::::res://Scripts/TM0.gd<>uid://bxrkogx4f7p3n::::res://Scripts/bullet_silver0.gd<>uid://dh44r4f5badhk::::res://target.tscn<>uid://bacucxpi73rgk::::res://arrow.tscn<>uid://c4b2sss0halhb::::res://BebasNeue-Regular.ttf
+::res://Scripts/::1765441658
 bet.gd::GDScript::9218582160656404553::1765291609::0::1::::<>CharacterBody2D<><>0<>0<><>::
 bullet_red.gd::GDScript::8329444449015505432::1765354221::0::1::::<>RigidBody2D<><>0<>0<><>::
 bullet_silver0.gd::GDScript::4036491032225382705::1765440070::0::1::::<>RigidBody2D<><>0<>0<><>::
@@ -60,7 +60,8 @@ health_bar.gd::GDScript::2606814192455826997::1764582907::0::1::::<>ProgressBar<
 player_red.gd::GDScript::7516904662871839612::1765348483::0::1::::<>CharacterBody2D<><>0<>0<><>::
 player_silver.gd::GDScript::633772030921926553::1765372198::0::1::::<>CharacterBody2D<><>0<>0<><>::
 target.gd::GDScript::3583742805876860962::1765287688::0::1::::<>StaticBody2D<><>0<>0<><>::
-TM.gd::GDScript::4479920495752568159::1765439997::0::1::::<>Node<><>0<>0<><>::
+TM0.gd::GDScript::4479920495752568159::1765439997::0::1::::<>Node<><>0<>0<><>::
+TM1.gd::GDScript::1396228166747579079::1765441658::0::1::::<>Node<><>0<>0<><>::
 turnmanager.gd::GDScript::6948053881312206400::1765348483::0::1::::<>Node2D<><>0<>0<><>::
 wind.gd::GDScript::6126993230984190183::1764582907::0::1::::<>Area2D<><>0<>0<><>::
 ::res://turret/::1765441297

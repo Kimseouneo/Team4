@@ -1,5 +1,10 @@
-res://Scripts/bullet_silver0.gd
-res://Scripts/TM.gd
+res://turret/Turret1.tscn
 res://map/DesertMap_test2.tscn
+res://turret/shooter.gd
+res://turret/TurretBullet.gd
+res://map/PracticeMap.tscn
+res://Scripts/target.gd
+res://Scripts/bet.gd
+res://bet.tscn
+res://Scripts/player_silver.gd
 res://turret/TurretBullet.tscn
-res://Scripts/TM1.gd
