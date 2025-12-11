@@ -1,13 +1,13 @@
 [gd_scene load_steps=11 format=4 uid="uid://dxjq8xb8yqd6f"]
 
 [ext_resource type="Texture2D" uid="uid://cfo476rs83dka" path="res://map/desert_sand.png" id="1_4rxgm"]
-[ext_resource type="Script" uid="uid://c58xox0grg3xc" path="res://turnmanager.gd" id="1_js7nn"]
 [ext_resource type="Texture2D" uid="uid://cx365w48gs7rl" path="res://map/Desert Clean.png" id="1_swmhe"]
 [ext_resource type="PackedScene" uid="uid://bkvktn0c6bd7w" path="res://character_silver.tscn" id="4_hde6q"]
-[ext_resource type="PackedScene" uid="uid://bo3sko3rywpwp" path="res://chracter_red.tscn" id="5_a6a3t"]
 [ext_resource type="PackedScene" uid="uid://2rnhmeok7h2b" path="res://bullet.tscn" id="5_hde6q"]
-[ext_resource type="Script" uid="uid://bmbfhyos4b20t" path="res://Scripts/bullet_silver.gd" id="6_gthff"]
-[ext_resource type="Script" uid="uid://dqw3y6q4vtyqq" path="res://Scripts/bullet_red.gd" id="8_y3vnr"]
+[ext_resource type="Script" uid="uid://bmbfhyos4b20t" path="res://Scripts/bullet_silver1.gd" id="6_gthff"]
+[ext_resource type="PackedScene" uid="uid://bacucxpi73rgk" path="res://arrow.tscn" id="7_y3vnr"]
+[ext_resource type="PackedScene" uid="uid://bcui3o5cnlrwq" path="res://turret/Turret1.tscn" id="8_gthff"]
+[ext_resource type="Script" uid="uid://t5lw6bswx2rb" path="res://Scripts/TM1.gd" id="8_y3vnr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gdgr7"]
 texture = ExtResource("1_4rxgm")
@@ -468,12 +468,6 @@ sources/0 = SubResource("TileSetAtlasSource_gdgr7")
 
 [node name="DesertMap_test2" type="Node2D"]
 
-[node name="Turnmanager" type="Node2D" parent="."]
-position = Vector2(953, 462)
-rotation = 3.1415927
-scale = Vector2(0.5, -0.5)
-script = ExtResource("1_js7nn")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1089, 359)
 scale = Vector2(1.7015626, 1.1265625)
@@ -484,7 +478,7 @@ tile_map_data = PackedByteArray("AAABACwAAAALAAgAAAAAACwAAAAKAAgAAAAAACsAAAAKAAc
 tile_set = SubResource("TileSet_js7nn")
 
 [node name="char_silver" parent="." instance=ExtResource("4_hde6q")]
-position = Vector2(142, 498)
+position = Vector2(161, 539)
 scale = Vector2(0.2, 0.2)
 
 [node name="bullet_silver" parent="char_silver" node_paths=PackedStringArray("map_layer") instance=ExtResource("5_hde6q")]
@@ -492,15 +486,15 @@ script = ExtResource("6_gthff")
 explosion_radius_px = 128.0
 map_layer = NodePath("../../Ground")
 
-[node name="char_red" parent="." instance=ExtResource("5_a6a3t")]
-position = Vector2(931, 549)
-scale = Vector2(-0.2, 0.2)
+[node name="Arrow2" parent="char_silver/bullet_silver" instance=ExtResource("7_y3vnr")]
+position = Vector2(-804.9999, -2694.9995)
+scale = Vector2(2.4999995, 0.9999998)
 
-[node name="bullet_red" parent="char_red" node_paths=PackedStringArray("map_layer") instance=ExtResource("5_hde6q")]
+[node name="Turret" parent="." instance=ExtResource("8_gthff")]
+position = Vector2(753.00006, 530)
+scale = Vector2(0.7, 0.7)
+
+[node name="Turnmanager" type="Node" parent="."]
 script = ExtResource("8_y3vnr")
-explosion_radius_px = 128.0
-map_layer = NodePath("../../Ground")
 
 [connection signal="body_entered" from="char_silver/bullet_silver" to="char_silver" method="_on_bullet_silver_body_entered"]
-[connection signal="body_entered" from="char_silver/bullet_silver" to="char_red" method="_on_bullet_silver_body_entered"]
-[connection signal="body_entered" from="char_red/bullet_red" to="char_silver" method="_on_bullet_red_body_entered"]

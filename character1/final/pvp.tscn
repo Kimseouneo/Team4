@@ -2,11 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://bkvktn0c6bd7w" path="res://character_silver.tscn" id="1_vhvi2"]
 [ext_resource type="PackedScene" uid="uid://bo3sko3rywpwp" path="res://chracter_red.tscn" id="2_ik2x8"]
-[ext_resource type="PackedScene" uid="uid://cmem5oeti8fbu" path="res://test_env.tscn" id="3_6pmuh"]
-[ext_resource type="Script" uid="uid://c58xox0grg3xc" path="res://turnmanager.gd" id="4_ik2x8"]
+[ext_resource type="PackedScene" path="res://test_env.tscn" id="3_6pmuh"]
+[ext_resource type="Script" uid="uid://c58xox0grg3xc" path="res://Scripts/turnmanager.gd" id="4_ik2x8"]
 [ext_resource type="PackedScene" uid="uid://2rnhmeok7h2b" path="res://bullet.tscn" id="5_u2a8m"]
-[ext_resource type="Script" uid="uid://bmbfhyos4b20t" path="res://Scripts/bullet_silver.gd" id="6_mqe70"]
+[ext_resource type="Script" uid="uid://bmbfhyos4b20t" path="res://Scripts/bullet_silver1.gd" id="6_mqe70"]
 [ext_resource type="Script" uid="uid://dqw3y6q4vtyqq" path="res://Scripts/bullet_red.gd" id="7_mqe70"]
+
 
 [node name="pvp" type="Node2D"]
 

@@ -73,6 +73,7 @@ animation = &"explode"
 frame = 1
 
 [node name="Arrow" type="Sprite2D" parent="."]
+visible = false
 z_index = 2
 position = Vector2(10, -2)
 scale = Vector2(0.18841796, 0.14296874)

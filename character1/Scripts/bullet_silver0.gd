@@ -6,6 +6,8 @@ extends RigidBody2D
 @export var gravity: float = 500.0
 @export var power: float = 5.0
 @export var arrow_scale_damp: float = 50.0
+@export var right_limit = 1200.0
+@export var left_limit = 0.0
 
 var is_dragging := false
 var drag_start := Vector2.ZERO
@@ -14,7 +16,7 @@ var initial_arrow_scale: Vector2
 var start_pos := Vector2.ZERO
 @onready var sprite: Sprite2D = $Bullet
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var arrow_sprite = $"."
+@onready var arrow_sprite = $"../Arrow"
 @onready var collision_shape = $CollisionShape2D
 @onready var char_owner: Node2D = get_parent()
 @onready var turn_manager: Node = $"../../Turnmanager"
@@ -90,8 +92,8 @@ func update_arrow(mouse_pos: Vector2):
 	# 1) 화살표의 위치를 항상 탄 위치로 고정
 	arrow_sprite.global_position = global_position
 
-	# 2) 방향 벡터 = (마우스 - 탄)
-	var dir = mouse_pos - global_position
+	# 2) 방향 벡터
+	var dir = global_position - mouse_pos
 	arrow_sprite.rotation = dir.angle()  # ← 화살표의 방향
 
 	# 3) 화살표 길이(스케일) 조절
@@ -126,6 +128,17 @@ func _physics_process(delta: float):
 	linear_velocity.y += gravity * delta
 	if linear_velocity.length() > 0.1:
 		rotation = linear_velocity.angle()
+	
+	#좌우 limit 설정
+	if abs(global_position.x) > right_limit:
+		if turn_manager:
+			turn_manager.next_turn()
+		stop_bullet()
+		
+	if abs(global_position.x) < left_limit:
+		if turn_manager:
+			turn_manager.next_turn()
+		stop_bullet()		
 
 func _on_body_entered(body: Node):
 	if is_exploding:

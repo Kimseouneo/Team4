@@ -1,3 +1,5 @@
-res://bet.tscn
-res://Scripts/bet.gd
-res://map/PracticeMap.tscn
+res://Scripts/bullet_silver0.gd
+res://Scripts/TM.gd
+res://map/DesertMap_test2.tscn
+res://turret/TurretBullet.tscn
+res://Scripts/TM1.gd
