@@ -43,3 +43,9 @@ position = Vector2(-38, 45)
 texture = ExtResource("3_m4gea")
 
 [node name="Anchor" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -7000000
+limit_top = -7000000
+limit_right = 7000000
+limit_bottom = 3000000
