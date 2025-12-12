@@ -59,7 +59,6 @@ linear_damp_mode = 1
 linear_damp = -1.0
 
 [node name="Bullet" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
 texture = ExtResource("1_as0xd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

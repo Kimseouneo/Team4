@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=4 uid="uid://dsww267cr3pnh"]
 
-[ext_resource type="Texture2D" uid="uid://dl5yn1sd0rtbi" path="res://img/practice_bg.jpg" id="1_00nlp"]
+[ext_resource type="Texture2D" uid="uid://dv85hyddrsb08" path="res://img/Practicebg.png" id="1_hwdew"]
 [ext_resource type="Texture2D" uid="uid://ri82cej7owu" path="res://img/Cyberpunk_tile.png" id="1_u38i7"]
 [ext_resource type="PackedScene" uid="uid://bkvktn0c6bd7w" path="res://character_silver.tscn" id="2_00nlp"]
 [ext_resource type="Texture2D" uid="uid://d4d76733o4pyn" path="res://img/concrete_tile.png" id="3_1rhen"]
@@ -3632,8 +3632,9 @@ sources/2 = SubResource("TileSetAtlasSource_blhya")
 [node name="PracticeMap" type="Node2D"]
 
 [node name="background" type="Sprite2D" parent="."]
-position = Vector2(547, 413)
-texture = ExtResource("1_00nlp")
+position = Vector2(549.00006, 162.00002)
+scale = Vector2(1.1132813, 1.0839844)
+texture = ExtResource("1_hwdew")
 
 [node name="ENV" type="TileMapLayer" parent="."]
 use_parent_material = true
