@@ -30,7 +30,7 @@ func _input(event):
 			restart_game()
 		return
 
-	#마우스 드래그 onoff
+	#마우스 드래그 on/off
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
