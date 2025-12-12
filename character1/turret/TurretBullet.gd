@@ -9,7 +9,7 @@ func _ready():
 	monitorable = true
 
 func _physics_process(delta: float):
-	position += direction * speed * delta
+	global_position += direction * speed * delta
 
 func _on_body_entered(body:Node):
 	if body.name=="char_silver":

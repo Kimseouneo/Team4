@@ -14,15 +14,16 @@ var initial_arrow_scale: Vector2
 var start_pos := Vector2.ZERO
 @onready var sprite: Sprite2D = $Bullet
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var arrow_sprite = $Arrow2
+@onready var arrow = $Arrow2
 @onready var collision_shape = $CollisionShape2D
 @onready var char_owner: Node2D = get_parent()
 @onready var turn_manager: Node = $"../../Turnmanager"
 @onready var anchor : Node2D = get_parent().get_node("Anchor")
 @onready var Target = $"../../Target"
+var can_drag := true  # 드래그 활성화
 var active = false #초기에는 비활성화
 
-func destroy_tiles_around_explosion()->void:
+func destroy_tiles_around_explosion():
 	if map_layer==null:
 		return
 	# 1) 총알의 global_position을 Map 기준 로컬 좌표로 변환
@@ -51,6 +52,8 @@ func destroy_tiles_around_explosion()->void:
 
 func set_active(state):
 	active = state
+	if state:
+		can_drag = true
 
 func _ready():
 	start_pos = global_position # 탄 시작 지점 저장
@@ -58,8 +61,8 @@ func _ready():
 	gravity_scale = 0
 	sprite.visible = false
 	animated_sprite.visible = false
-	arrow_sprite.visible = false
-	initial_arrow_scale = arrow_sprite.scale
+	arrow.visible = false
+	initial_arrow_scale = arrow.scale
 	contact_monitor = true
 	max_contacts_reported = 1
 	body_entered.connect(_on_body_entered)
@@ -68,7 +71,7 @@ func _ready():
 # 마우스 입력 & 발사 로직
 # -------------------------
 func _input(event):
-	if not active or is_exploding:
+	if not active or is_exploding or not can_drag:
 		return
 
 	if event is InputEventMouseButton:
@@ -76,37 +79,30 @@ func _input(event):
 			if event.pressed:
 				is_dragging = true
 				drag_start = event.position
-				arrow_sprite.visible = true
+				arrow.visible = true
 				update_arrow(event.position)
 			else:
 				if is_dragging:
 					is_dragging = false
-					arrow_sprite.visible = false
+					arrow.visible = false
 					_fire(event.position)
 	elif event is InputEventMouseMotion and is_dragging:
 		update_arrow(event.position)
 
 func update_arrow(mouse_pos: Vector2):
-	# 1) 화살표의 위치를 항상 탄 위치로 고정
-	arrow_sprite.global_position = global_position
+	# 1) 화살표의 위치 고정
+	arrow.global_position = anchor.global_position
 
-	# 2) 방향 벡터 = (마우스 - 탄)
-	var dir = global_position - mouse_pos
-	arrow_sprite.rotation = dir.angle()  # ← 화살표의 방향
+	# 2) 방향 벡터 = (마우스 - 탄)	
+	var dir = mouse_pos - anchor.global_position
+	arrow.rotation = dir.angle() + PI # ← 화살표의 방향
 
-	# 3) 화살표 길이(스케일) 조절
-	var dist = dir.length()
-	var stretch_ratio = clamp(dist / arrow_scale_damp, 1.0, 3.0)
-	arrow_sprite.scale = Vector2(
-		initial_arrow_scale.x * stretch_ratio,
-		initial_arrow_scale.y
-	)
 func _fire(release_pos: Vector2):
 	start_pos = char_owner.global_position+ Vector2(50, 10)
 	freeze = false
 	gravity_scale = 1
 	sprite.visible = true
-	arrow_sprite.visible = false
+	arrow.visible = false
 	
 	collision_shape.disabled = true
 	await get_tree().create_timer(0.1).timeout
@@ -143,15 +139,15 @@ func _on_body_entered(body: Node):
 		explode()
 # -------------------------
 # 폭발 및 턴 전환 처리
-# -------------------------
 # 폭발 처리 함수
 func explode():
 	if is_exploding:
 		return
 	is_exploding = true
+	can_drag = false
 	
 	var collision_pos = global_position #충돌 지점 저장
-	arrow_sprite.visible = false
+	arrow.visible = false
 	sprite.visible = false
 	
 	var explosion = AnimatedSprite2D.new()
@@ -188,7 +184,7 @@ func stop_bullet():
 	rotation = 0
 	sprite.visible = false
 	animated_sprite.visible = false#애니메이션 이미지 안 보이도록 함
-	arrow_sprite.visible = false#화살표 이미지 안 보이도록 함
+	arrow.visible = false#화살표 이미지 안 보이도록 함
 
 func _stop_physics():
 	freeze = true

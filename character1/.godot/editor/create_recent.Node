@@ -1,5 +1,6 @@
-Area2D
+AudioStreamPlayer2D      - Matches the "sound" keyword.
 Node2D
+Area2D
 RigidBody2D
 CharacterBody2D
 Node

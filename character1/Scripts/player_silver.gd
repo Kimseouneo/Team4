@@ -4,6 +4,8 @@ extends CharacterBody2D
 @onready var bullet = $bullet_silver
 @export var health = 10			#현재 체력
 @export var max_health = 10		#최대 체력
+var is_dead := false
+
 @export var speed = 250
 @export var gravity = 1200.0
 @export var jump = 600.0
@@ -22,6 +24,13 @@ func set_active(state: bool):
 	active = state
 
 func _input(event):
+	# R키 재시작
+	if is_dead and event is InputEventKey:
+		if event.keycode == KEY_R and event.pressed:
+			restart_game()
+		return
+
+	#마우스 드래그 onoff
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
@@ -29,17 +38,32 @@ func _input(event):
 			else:
 				dragging = false
 
+	
+
 func _ready():
 	# 초기 텍스처 세팅
 	body_sprite.texture = normal_texture
 	health_bar.max_value = max_health
 	health_bar.value = health
 	
+func restart_game():
+	get_tree().reload_current_scene()
+
 func take_damage(amount: int):
+	if is_dead:
+		return
 	health = max(health - amount, 0)
 	_update_body_texture()
 	_update_health_bar()
+	if health <= 0:
+		die()
+func die():
+	is_dead = true
+	active = false
+	velocity = Vector2.ZERO
 
+	set_physics_process(false)
+	
 func _update_health_bar(): #피해의 정도에 따라 체력바 업데이트
 	if health_bar:
 		health_bar.value = health
