@@ -8,7 +8,9 @@ extends StaticBody2D
 @onready var fire_timer: Timer = $FireTimer
 
 var hits = 0 # 탄을 맞으면 1회씩 증가
+
 func _ready():
+	hits = 0
 	fire_timer.wait_time = fire_interval
 	fire_timer.one_shot = false        # 반복 발사
 	fire_timer.timeout.connect(_on_fire_timer_timeout)
@@ -33,5 +35,4 @@ func _on_bullet_silver_body_entered(body):
 	if body.name == "Turret":
 		hits += 1
 		if hits >= max_hits:
-			print("Turret destroyed!")
 			queue_free()			

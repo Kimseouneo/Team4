@@ -131,12 +131,15 @@ func _on_body_entered(body: Node):
 		print(body.name)
 		explode()
 
-	if body.name == "char_red" or "char_silver":
+	if body.name == "char_red" or body.name == "char_silver":
 		explode()
 		
 	if body.name == "Target":
 		Target.add_score(1)
 		explode()
+		
+	if body.is_in_group("turret"):
+		explode()		
 # -------------------------
 # 폭발 및 턴 전환 처리
 # 폭발 처리 함수
@@ -172,7 +175,6 @@ func explode():
 	# 턴 전환
 	if turn_manager and active:
 		active = false  # 비활성화
-		print(">>> Bullet exploded! Passing turn...")
 		turn_manager.next_turn()
 
 
