@@ -79,7 +79,7 @@ func _input(event):
 			if event.pressed:
 				is_dragging = true
 				drag_start = event.position
-				arrow.visible = true
+				arrow.visible = false
 				update_arrow(event.position)
 			else:
 				if is_dragging:

@@ -61,7 +61,6 @@ func die():
 	is_dead = true
 	active = false
 	velocity = Vector2.ZERO
-
 	set_physics_process(false)
 	
 func _update_health_bar(): #피해의 정도에 따라 체력바 업데이트
@@ -115,7 +114,6 @@ func _on_bullet_red_body_entered(body):
 	if body.name == "char_silver":
 		take_damage(1)
 		_update_health_bar()
-
 
 func _on_bullet_silver_body_entered(body: Node) -> void:
 	if body.name == "char_silver":

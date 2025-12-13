@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dxjq8xb8yqd6f"]
+[gd_scene load_steps=17 format=4 uid="uid://dxjq8xb8yqd6f"]
 
 [ext_resource type="Texture2D" uid="uid://c5mm22tke3h8e" path="res://img/사막.png" id="1_1le7j"]
 [ext_resource type="Texture2D" uid="uid://cfo476rs83dka" path="res://map/desert_sand.png" id="1_4rxgm"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://t5lw6bswx2rb" path="res://Scripts/TM1.gd" id="8_y3vnr"]
 [ext_resource type="PackedScene" uid="uid://dywoosleyan4x" path="res://turret/TurretBullet.tscn" id="9_y3vnr"]
 [ext_resource type="PackedScene" uid="uid://b7ji5vdw1v4gc" path="res://bet.tscn" id="10_1le7j"]
+[ext_resource type="Script" uid="uid://bsn8uwcqiopk1" path="res://turret/shooter1.gd" id="10_8o6gq"]
 [ext_resource type="Script" uid="uid://d4lsx30ijl8mf" path="res://Scripts/bet.gd" id="11_gliro"]
 [ext_resource type="AudioStream" uid="uid://ct5ocpfiohrd2" path="res://img/desert map BGM sample 1.mp3" id="12_gliro"]
 [ext_resource type="Texture2D" uid="uid://s5pk7yllemgf" path="res://img/victory_img.png" id="13_g6pph"]
@@ -518,6 +519,7 @@ position = Vector2(-13, -11)
 position = Vector2(1063, 230)
 collision_layer = 2
 collision_mask = 3
+script = ExtResource("10_8o6gq")
 bullet_scene = ExtResource("9_y3vnr")
 
 [node name="Turretbullet" parent="Turret2" instance=ExtResource("9_y3vnr")]
@@ -547,7 +549,7 @@ collision_layer = 2
 script = ExtResource("11_gliro")
 
 [node name="Victory" type="Sprite2D" parent="."]
-position = Vector2(548, 175)
+position = Vector2(1631, 211)
 texture = ExtResource("13_g6pph")
 
 [connection signal="body_entered" from="char_silver/bullet_silver" to="char_silver" method="_on_bullet_silver_body_entered"]
